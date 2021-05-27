@@ -1,0 +1,72 @@
+.webix_list {
+    width: 150px;
+    border: none;
+    background: rgba(255, 255, 255, 0);
+}
+
+.movies_tasks .webix_list_item, .movies_tasks .webix_list_item.webix_selected{
+    width: 150px;
+    padding: 3px 2px;
+    border-color: rgba(255, 255, 255, 0);
+    background-image:none;
+    background-color:#fff;
+}
+  .movies_tasks .webix_list_item.webix_selected .overall_tasks{
+    background-color: #DBFFB0;
+}
+  .overall_tasks{
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 8px;
+    height: 130px;
+    color: rgb(0, 0, 0);
+    background: #aebaff;
+    box-shadow: 0px 2px 2px #d4d7de;
+}
+  
+  .title_tasks{
+    height:60px;
+    line-height:20px;
+    overflow:hidden;
+    font-weight:bold;
+    float: left;
+    padding-left: 5px;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 200px;
+  }
+
+  .title_long_tasks{
+    height:60px;
+    line-height:20px;
+    overflow:hidden;
+    font-weight:bold;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+    padding-left: 5px;
+    width: 200px;
+  }
+
+  .status_tasks{
+    height:20px;
+    line-height:20px;
+    overflow:hidden;
+    margin-top: 5px;
+    margin-left: 10px;
+    float: left;
+    padding-left: 5px;
+    width: 200px;
+  }
+
+.performer_tasks{
+    height:20px;
+    line-height:20px;
+    overflow:hidden;
+    margin-top: 5px;
+    margin-left: 10px;
+    font-weight:bold;
+    float: left;
+    padding-left: 5px;
+    width: 200px;
+}

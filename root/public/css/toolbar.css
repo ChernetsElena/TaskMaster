@@ -1,0 +1,13 @@
+.toolbar {
+    background: linear-gradient(45deg, #A3B1FF, #7388FF);
+}
+
+.label {
+    color: black;
+    font-size: 24px;
+}
+
+.my_style {
+    /* color: black; */
+    font-size: 58px;
+}
