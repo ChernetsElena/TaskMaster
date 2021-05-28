@@ -13,6 +13,12 @@ export default function TasksView(){
                     align: "center"
                 },
                 {
+                    view:"text", 
+                    id:"filter-list-new",
+                    width: 270,
+                    css: "webix_el_box"    
+                },
+                {
                     view:"list",
                     id:"tasksNewList",
                     xCount:1,
@@ -36,6 +42,12 @@ export default function TasksView(){
                     view: "label",
                     label: "Назначеные задачи",
                     align: "center"
+                },
+                {
+                    view:"text", 
+                    id:"filter-list-assigned",
+                    width: 270,
+                    css: "webix_el_box"    
                 },
                 {
                     view:"list",
@@ -64,6 +76,12 @@ export default function TasksView(){
                     align: "center"
                 },
                 {
+                    view:"text", 
+                    id:"filter-list-injob",
+                    width: 270,
+                    css: "webix_el_box"    
+                },
+                {
                     view:"list",
                     id:"tasksInJobList",
                     xCount:1,
@@ -90,6 +108,12 @@ export default function TasksView(){
                     align: "center"
                 },
                 {
+                    view:"text", 
+                    id:"filter-list-coordination",
+                    width: 270,
+                    css: "webix_el_box"    
+                },
+                {
                     view:"list",
                     id:"tasksCoordinationList",
                     xCount:1,
@@ -114,6 +138,12 @@ export default function TasksView(){
                     view: "label",
                     label: "Решенные",
                     align: "center"
+                },
+                {
+                    view:"text", 
+                    id:"filter-list-done",
+                    width: 270,
+                    css: "webix_el_box"    
                 },
                 {
                     view:"list",

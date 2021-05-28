@@ -3,64 +3,67 @@ export default function ProjectsWindowView(){
         view:"popup",
         id:"popupAddProject",
         align: "center",
+        
         body:{
             view:"form", 
             id:"log_form",
+            width: 500,
             elements:[
                 { rows:[
-                    {cols: [
                         {
                             view:"text", 
                             label:"Название проекта",
                             id:"projectName", 
                             width: 400,
-                            labelPosition: "top",
+                            labelWidth: 150,
                             align : 'center',
                             attributes: {required: true}
                         },
-                        {rows: [
+                        {cols: [
+                            {width: 34},
                             { 
                                 view:"colorpicker", 
                                 label:"Цвета проекта", 
-                                labelPosition: "top",
-                                width: 150,
+                                labelWidth: 150,
+                                width: 275,
                                 name:"color",
                                 value:"#ffdb5c" 
                             },
                             { 
                                 view:"colorpicker", 
-                                width: 150,
+                                width: 125,
                                 name:"color",
                                 value:"#ffacac" 
                             }
-                        ]}
-                    ]},
+                        ]},
                     {
                         view:"textarea", 
                         label:"Описание",
+                        labelWidth: 150,
                         id:"projectDescription", 
                         width: 400,
-                        height: 300,
-                        labelPosition: "top",
+                        height: 200,
                         align : 'center',
                     },
                     {
                         view:"combo", 
                         id:"teamlead", 
                         label:"Teamlead", 
-                        width: 350,
+                        width: 400,
+                        labelWidth: 150,
                         align : 'center',
-                        labelPosition: "top", 
                         options:["One", "Two", "Three"]
                     },
                     {cols: [
+                        {width: 80},
                         {
                             view:"button", 
                             id:"addProjectBtn", 
                             value:"Создать",
                             width: 150,
                             align : 'center',
-                            top: 20
+                            top: 20,
+                            css: "webix_primary"
                         }, 
                         {
                             view:"button", 
@@ -72,9 +75,10 @@ export default function ProjectsWindowView(){
                         }, 
                     ]} 
                 ],
-                css:{"background": "linear-gradient(45deg, #EECFBA, #C5DDE8)"},
+                
             },    
-        ]
+        ],
+        css:{"border-color":"orange"},
     }
     }
 }

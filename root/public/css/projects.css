@@ -1,9 +1,11 @@
+.movies .webix_dataview {
+  border: none;
+  background: none;
+}
 
 .movies .webix_dataview_item, .movies .webix_dataview_item.webix_selected{
     padding: 3px 2px;
-    border-color: #fff;
-    background-image:none;
-    background-color:#fff;
+    border: none;
 }
 
 .movies .webix_dataview_item.webix_selected .overall{

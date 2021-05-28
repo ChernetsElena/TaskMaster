@@ -5,6 +5,7 @@ export default function ToolbarView(){
         css: 'toolbar',
         height: 60,
         cols: [
+            {width: 50},
             {
                 view:"button", 
                 id:"userButton",
@@ -14,6 +15,7 @@ export default function ToolbarView(){
                 height: 50,
                 
             },
+            {width: 10},
             {
                 view:"button", 
                 id:"employeesButton",
@@ -21,7 +23,6 @@ export default function ToolbarView(){
                 icon:"wxi-user",
                 width: 50
             },
-            {},
             {
                 view: 'label',
                 label: "<span class='label'>TaskMaster</span>",
@@ -36,6 +37,7 @@ export default function ToolbarView(){
                 width: 150,
                 height: 50
             },
+            {width:50}
         ],
     }
 }
