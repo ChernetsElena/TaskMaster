@@ -1,6 +1,3 @@
-
-
-
 export default function TasksView(){
     return {
         css: {"background": "linear-gradient(-45deg, #ffdb5c, #ffacac)"},

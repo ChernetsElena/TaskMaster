@@ -30,35 +30,3 @@ export default function EmployeesView(){
         ]  
     }
 }
-
-
-export function TabControllsView() {
-    return {
-        id: 'employeetab-controlls',
-        hidden: true,
-        cols: [
-            {
-                id: 'employeetab-add-btn',
-                view: 'icon',
-                tooltip: 'Добавить',
-                icon: 'plus',
-                width: 30,
-            },
-            {
-                id: 'employeetab-edit-btn',
-                view: 'icon',
-                tooltip: 'Редактировать',
-                icon: 'pencil',
-                width: 30,
-            },
-            {
-                id: 'employeetab-remove-btn',
-                view: 'icon',
-                tooltip: 'Удалить',
-                icon: 'trash',
-                width: 30,
-            },
-            { width: 30 },
-        ]
-    }
-}

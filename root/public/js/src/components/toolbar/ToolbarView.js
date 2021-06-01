@@ -19,9 +19,9 @@ export default function ToolbarView(){
             {
                 view:"button", 
                 id:"employeesButton",
-                type:"icon", 
-                icon:"wxi-user",
-                width: 50
+                 
+                label:"Сотрудники",
+                width: 150
             },
             {
                 view: 'label',

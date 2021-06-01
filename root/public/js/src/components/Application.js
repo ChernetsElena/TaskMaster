@@ -6,11 +6,8 @@ import { ProjectsButton } from "./src/components/projects/projectButton/CProject
 
 export class Application {
     constructor() {
-        this.toolbar = new Toolbar()          // экземпляр контроллера пользовательской информации 
-        this.project = new Project()           // экземпляр контроллера книг
-        this.projectsButton = new ProjectsButton()   // экземпляр контроллера сотрудников
     }
     config() {
-        return ApplicationView(this.toolbar, this.project, this.projectsButton)
+        return ApplicationView()
     }
 }

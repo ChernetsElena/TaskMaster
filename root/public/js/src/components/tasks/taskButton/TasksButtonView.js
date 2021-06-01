@@ -6,7 +6,7 @@ export default function TaskButtonView(){
                 {},
                 {
                     view:"button", 
-                    id:"tasksToProjectsBtn", 
+                    id:"tasksButtonToProjectsBtn", 
                     label:"К проектам",
                     type: "icon",
                     icon: "wxi-angle-left",
@@ -16,7 +16,7 @@ export default function TaskButtonView(){
                 {width: 280},
                 {
                     view:"button", 
-                    id:"newTaskBtn", 
+                    id:"tasksButtonNewTaskBtn", 
                     value:"Новая задача",
                     width: 200,
                     height: 50,
