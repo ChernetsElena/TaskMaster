@@ -6,10 +6,12 @@ export class TaskButton {
     constructor(){
         this.view
         this.window
+        this.showProjectsView
     }
 
-    init() {
+    init(showProjectsViewCB) {
         this.window = new TaskWindow()
+        this.showProjectsView = showProjectsViewCB
     }
     
     config() {
@@ -27,10 +29,16 @@ export class TaskButton {
 
         this.view.newTaskBtn.attachEvent("onItemClick", () => {
             this.showWindow()
-        })   
+        })
+
+        this.view.toProjectsBtn.attachEvent("onItemClick", () => {
+            this.showProjectsView()
+        })
     }
 
     showWindow() {
-        this.window.show(TASK_WINDOW_TYPE.new)
+        this.window.show(TASK_WINDOW_TYPE.done)
     }
+
+    
 }

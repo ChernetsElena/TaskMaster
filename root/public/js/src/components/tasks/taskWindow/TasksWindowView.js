@@ -22,20 +22,34 @@ export default function TasksWindowView(){
     return {
         view:"window",
         id:"taskWindow",
-        head: {
-            view: 'template',
-            id: 'taskWindowLabel',
-            template: headText,
-            css: 'webix_template'
-        },
+        head: {cols: [
+            {
+                view: 'template',
+                id: 'taskWindowLabel',
+                css: 'webix_template',
+                template: headText,
+                borderless: true,
+                type:"header",
+                width: 200,
+            },
+            {width: 650},
+            {
+                view: "button",
+                id: "taskWindowCloseButton",
+                type: "icon",
+                icon: "wxi-close",
+                width: 100,
+
+            }
+        ]},
         position: "center",
         modal: true,
         css: "popup_task_window",
-        width: 600,
+        width: 1000,
         body:{
             view:"form", 
             id:"formWindowTask",
-            width: 500,
+            width: 1000,
             elements:[
                 { rows:[
                     {
@@ -89,42 +103,46 @@ export default function TasksWindowView(){
                         css: "segment_btn_task_window",
                         
                     },
-                    {cols: [
-                        {width: 34},
-                        {rows: [
-                            {
-                                view: "label",
-                                id: "formWindowTaskPlanTimeLabel",
-                                label: "Планируемое время выполнения:"
-                            },
-                            {
-                                view: "timeboard",
-                                id: "formWindowTaskPlanTime",
-                                twelve: false,
-                                width: 400
-                             },
-                             
+                    {
+                        cols: [
+                        {},
+                        {cols: [
+                            {rows: [
+                                {
+                                    view: "label",
+                                    id: "formWindowTaskPlanTimeLabel",
+                                    label: "Планируемое время выполнения:"
+                                },
+                                {
+                                    view: "timeboard",
+                                    id: "formWindowTaskPlanTime",
+                                    twelve: false,
+                                    width: 400
+                                 },
+                                 
+                            ]},
                         ]},
+                        {width: 34},
+                        {cols: [
+                            {rows: [
+                                {
+                                    view: "label",
+                                    id: "formWindowTaskFactTimeLabel",
+                                    label: "Фактическое время выполнения:"
+                                },
+                                {
+                                    view: "timeboard",
+                                    id: "formWindowTaskFactTime",
+                                    twelve: false,
+                                    width: 400
+                                 },
+                                 
+                            ]},
+                        ]},
+                        {}
                     ]},
                     {cols: [
-                        {width: 34},
-                        {rows: [
-                            {
-                                view: "label",
-                                id: "formWindowTaskFactTimeLabel",
-                                label: "Фактическое время выполнения:"
-                            },
-                            {
-                                view: "timeboard",
-                                id: "formWindowTaskFactTime",
-                                twelve: false,
-                                width: 400
-                             },
-                             
-                        ]},
-                    ]},
-                    {cols: [
-                        {width: 90},
+                        {},
                         {
                             view:"button", 
                             id:"taskWindowAddBtn", 
@@ -133,13 +151,7 @@ export default function TasksWindowView(){
                             top: 20,
                             css: "webix_primary",
                         }, 
-                        {
-                            view:"button", 
-                            id:"taskWindowCancelBtn", 
-                            value:"Закрыть",
-                            width: 150,
-                            top: 20,
-                        }, 
+                        {},
                     ]}
                 ] 
             },    

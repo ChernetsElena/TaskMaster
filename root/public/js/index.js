@@ -8,9 +8,9 @@ import { Tasks } from "./src/components/tasks/CTasks.js";
 import { Employees } from "./src/components/employees/CEmployees.js";
 import { EmployeesWindow } from "./src/components/employees/employeesWindow/CEmployeesWindow.js";
 import { EmployeesButton } from "./src/components/employees/employeesButton/CEmployeesButton.js";
-
+import { Application } from "./src/components/Application.js"
 webix.ready(() => {
-    let app = new TaskButton();
+    let app = new Application();
     app.init()
     webix.ui(app.config()).show()
     app.attachEvents()

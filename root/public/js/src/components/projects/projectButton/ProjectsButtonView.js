@@ -4,9 +4,10 @@ export default function ProjectsButtonView(){
             {height: 30},
             {
                 view:"button", 
-                id:"my_button", 
+                id:"projectsAddButton", 
                 value:"Новый проект",
-                width: 150,
+                width: 200,
+                height: 50,
                 align : 'center',
             }
         ],

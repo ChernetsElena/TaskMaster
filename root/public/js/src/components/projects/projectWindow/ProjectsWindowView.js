@@ -1,19 +1,56 @@
 export default function ProjectsWindowView(){
+    let headText = 'Новый проект'
+    
     return {
-        view:"popup",
-        id:"popupAddProject",
-        align: "center",
-        
+        view:"window",
+        id:"projectWindow",
+        position: "center",
+        modal: true,
+        head: {cols: [
+                {
+                    view: 'template',
+                    id: 'projectWindowLabel',
+                    css: 'webix_template',
+                    template: headText,
+                    borderless: true,
+                    type:"header",
+                    width: 320,
+                },
+                {
+                    view: "button",
+                    id: "projectWindowDeleteButton",
+                    type: "icon",
+                    icon: "wxi-trash",
+                    width: 50,
+    
+                },
+                {
+                    view: "button",
+                    id: "projectWindowUpdateButton",
+                    type: "icon",
+                    icon: "wxi-pencil",
+                    width: 50,
+    
+                },
+                {
+                    view: "button",
+                    id: "projectWindowCloseButton",
+                    type: "icon",
+                    icon: "wxi-close",
+                    width: 50,
+    
+                }
+            ]},
         body:{
             view:"form", 
-            id:"log_form",
+            id:"formWindowProject",
             width: 500,
             elements:[
                 { rows:[
                         {
                             view:"text", 
                             label:"Название проекта",
-                            id:"projectName", 
+                            id:"formWindowProjectName", 
                             width: 400,
                             labelWidth: 150,
                             align : 'center',
@@ -23,6 +60,7 @@ export default function ProjectsWindowView(){
                             {width: 34},
                             { 
                                 view:"colorpicker", 
+                                id: "formWindowProjectColorOne",
                                 label:"Цвета проекта", 
                                 labelWidth: 150,
                                 width: 275,
@@ -31,6 +69,7 @@ export default function ProjectsWindowView(){
                             },
                             { 
                                 view:"colorpicker", 
+                                id: "formWindowProjectColorTwo",
                                 width: 125,
                                 name:"color",
                                 value:"#ffacac" 
@@ -40,14 +79,14 @@ export default function ProjectsWindowView(){
                         view:"textarea", 
                         label:"Описание",
                         labelWidth: 150,
-                        id:"projectDescription", 
+                        id:"formWindowProjectDescription", 
                         width: 400,
                         height: 200,
                         align : 'center',
                     },
                     {
                         view:"combo", 
-                        id:"teamlead", 
+                        id:"formWindowProjecTeamlead", 
                         label:"Teamlead", 
                         width: 400,
                         labelWidth: 150,
@@ -55,7 +94,7 @@ export default function ProjectsWindowView(){
                         options:["One", "Two", "Three"]
                     },
                     {cols: [
-                        {width: 80},
+                        {},
                         {
                             view:"button", 
                             id:"addProjectBtn", 
@@ -65,14 +104,7 @@ export default function ProjectsWindowView(){
                             top: 20,
                             css: "webix_primary"
                         }, 
-                        {
-                            view:"button", 
-                            id:"cancelProjectBtn", 
-                            value:"Отмена",
-                            width: 150,
-                            align : 'center',
-                            top: 20
-                        }, 
+                        {},
                     ]} 
                 ],
                 

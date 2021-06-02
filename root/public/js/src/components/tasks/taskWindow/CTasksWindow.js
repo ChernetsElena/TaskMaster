@@ -16,8 +16,8 @@ export class TaskWindow {
         this.view = {
             window: $$('taskWindow'),
             windowLabel: $$('taskWindowLabel'),
-            windowCancelBtn: $$('taskWindowCancelBtn'),
             windowConfirmBtn: $$('taskWindowAddBtn'),
+            closeBtn: $$('taskWindowCloseButton'),
             form: $$('formWindowTask'),
             formfields: {
                 name: $$('formWindowTaskName'),
@@ -29,10 +29,11 @@ export class TaskWindow {
                 planTime: $$('formWindowTaskPlanTime'),
                 factTimeLabel: $$('formWindowTaskFactTimeLabel'),
                 factTime: $$('formWindowTaskFactTime'),
+               
             }
         }
 
-        this.view.windowCancelBtn.attachEvent("onItemClick", () => {
+        this.view.closeBtn.attachEvent("onItemClick", () => {
             this.view.form.clear()
             this.view.window.hide()
         })
@@ -72,10 +73,29 @@ export class TaskWindow {
                 this.view.formfields.name.define("readonly", true)
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.performer.disable()
-                this.view.formfields.urgently.disableOption(1)
-                this.view.formfields.urgently.disableOption(3)
-                this.view.window.resize()
+                this.view.formfields.factTime.disable()
                 break;
+            case TASK_WINDOW_TYPE.inJob:
+                this.view.formfields.name.define("readonly", true)
+                this.view.formfields.description.define("readonly", true)
+                this.view.formfields.performer.disable()
+                this.view.formfields.factTime.disable()
+                this.view.formfields.planTime.disable()
+                break;
+            case TASK_WINDOW_TYPE.coordination:
+                this.view.formfields.name.define("readonly", false)
+                this.view.formfields.description.define("readonly", false)
+                this.view.formfields.stage.disable()
+                break;
+            case TASK_WINDOW_TYPE.done:
+                this.view.formfields.name.define("readonly", true)
+                this.view.formfields.description.define("readonly", true)
+                this.view.formfields.performer.disable()
+                this.view.formfields.stage.disable()
+                this.view.formfields.factTime.disable()
+                this.view.formfields.planTime.disable()
+                break;
+            
             default:
                 console.error('Неизвестный тип отображения окна для работы с сущностью задачи');
                 return;
@@ -91,5 +111,8 @@ export class TaskWindow {
 
 export const TASK_WINDOW_TYPE = {
     new: 'NEW',
-    assigned: 'ASSIGNED'
+    assigned: 'ASSIGNED',
+    inJob: 'INJOB',
+    coordination: 'COORDINATION',
+    done: 'done'
 }

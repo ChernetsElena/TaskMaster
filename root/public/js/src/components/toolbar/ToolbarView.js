@@ -2,13 +2,14 @@
 export default function ToolbarView(){
     return {
         view: 'toolbar',
+        id: 'toolbar',
         css: 'toolbar',
         height: 60,
         cols: [
             {width: 50},
             {
                 view:"button", 
-                id:"userButton",
+                id:"toolbarUserButton",
                 type:"icon", 
                 icon:"wxi-user",
                 width: 50,
@@ -18,21 +19,21 @@ export default function ToolbarView(){
             {width: 10},
             {
                 view:"button", 
-                id:"employeesButton",
-                 
+                id:"toolbarEmployeesButton",
                 label:"Сотрудники",
                 width: 150
             },
             {
                 view: 'label',
-                label: "<span class='label'>TaskMaster</span>",
+                id: 'toolbarLabel',
+                label: "TaskMaster",
                 
             },
             // кнопка выхода
             {
                 view: 'button',
-                id: 'logoutBtn',
-                css: 'webix_secondary',
+                id: 'toolbarLogoutButton',
+                css: 'webix_transparent',
                 label: 'Выход',
                 width: 150,
                 height: 50

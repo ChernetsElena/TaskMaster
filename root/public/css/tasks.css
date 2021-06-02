@@ -1,6 +1,5 @@
 .webix_list {
     width: 150px;
-    border: none;
     background: rgba(255, 255, 255, 0);
 }
 
@@ -13,7 +12,7 @@
 }
 
 .movies_tasks .webix_list_item.webix_selected .overall_tasks{
-    background-color: #DBFFB0;
+    background-color: #b0edff;
 }
 
   .overall_tasks{
@@ -21,7 +20,7 @@
     -webkit-border-radius: 4px;
     -moz-border-radius: 8px;
     height: 130px;
-    color: rgb(0, 0, 0);
+    color: rgb(73, 73, 73);
     background: #aebaff;
     box-shadow: 0px 2px 2px #d4d7de;
 }

@@ -2,7 +2,16 @@ export default function TasksView(){
     return {
         css: {"background": "linear-gradient(-45deg, #ffdb5c, #ffacac)"},
         rows: [
+            {
+                view:"search", 
+                id:"filter-list",
+                placeholder:"Поиск по исполнителю...", 
+                align: 'center',
+                width: 600,
+                css: "webix_el_box"    
+            },
         {cols: [
+            {},
             {rows:[
                 {
                     view: "label",
@@ -10,21 +19,16 @@ export default function TasksView(){
                     align: "center"
                 },
                 {
-                    view:"text", 
-                    id:"filter-list-new",
-                    width: 270,
-                    css: "webix_el_box"    
-                },
-                {
                     view:"list",
                     id:"tasksNewList",
                     xCount:1,
                     css:"movies_tasks",
+                    select:true,
                     type: {
                         height: 140,
                         width: 270
                     },
-                    drag: "move",
+                    drag: false,
                     template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
                     data:[
                         { id:1, title:"The Shawshank Redemption", status:"Новая", performer:"Иванов Иван"},
@@ -41,21 +45,16 @@ export default function TasksView(){
                     align: "center"
                 },
                 {
-                    view:"text", 
-                    id:"filter-list-assigned",
-                    width: 270,
-                    css: "webix_el_box"    
-                },
-                {
                     view:"list",
                     id:"tasksAssignedList",
                     xCount:1,
                     css:"movies_tasks",
+                    select:true,
                     type: {
                         height: 140,
                         width: 270
                     },
-                    drag: "move",
+                    drag: false,
                     template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
                     data:[
                         { id:1, title:"The Shawshank Redemption", status:"Назначена", performer:"Иванов Иван"},
@@ -73,12 +72,6 @@ export default function TasksView(){
                     align: "center"
                 },
                 {
-                    view:"text", 
-                    id:"filter-list-injob",
-                    width: 270,
-                    css: "webix_el_box"    
-                },
-                {
                     view:"list",
                     id:"tasksInJobList",
                     xCount:1,
@@ -87,7 +80,7 @@ export default function TasksView(){
                         height: 140,
                         width: 270
                     },
-                    drag: "move",
+                    drag: false,
                     template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
                     data:[
                         { id:1, title:"The Shawshank Redemption", status:"В работе", performer:"Иванов Иван"},
@@ -105,12 +98,6 @@ export default function TasksView(){
                     align: "center"
                 },
                 {
-                    view:"text", 
-                    id:"filter-list-coordination",
-                    width: 270,
-                    css: "webix_el_box"    
-                },
-                {
                     view:"list",
                     id:"tasksCoordinationList",
                     xCount:1,
@@ -119,7 +106,7 @@ export default function TasksView(){
                         height: 140,
                         width: 270
                     },
-                    drag: "move",
+                    drag: false,
                     template:"<div class='overall_tasks' style='background: #v#' ><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
                     data:[
                         { id:1, title:"The Shawshank Redemption", status:"Согласование", performer:"Иванов Иван", v:"red"},
@@ -137,12 +124,6 @@ export default function TasksView(){
                     align: "center"
                 },
                 {
-                    view:"text", 
-                    id:"filter-list-done",
-                    width: 270,
-                    css: "webix_el_box"    
-                },
-                {
                     view:"list",
                     id:"tasksDoneList",
                     xCount:1,
@@ -151,7 +132,7 @@ export default function TasksView(){
                         height: 140,
                         width: 270
                     },
-                    drag: "move", 
+                    drag: false,
                     dragscroll:true,
                     template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
                     data:[
@@ -170,6 +151,7 @@ export default function TasksView(){
                     ]
                 },
             ]},
+            {},
         ]}
     ]}  
 }
