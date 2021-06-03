@@ -29,10 +29,16 @@ export class ProjectsWindow {
             }
         }
 
+        // this.view.updateBtn.attachEvent("onItemClick", () => {
+        //     this.update()
+        // });
+
         this.view.closeBtn.attachEvent("onItemClick", () => {
             this.view.form.clear();
             this.view.window.hide();
         });
+
+
     }
 
     switch(type) {
@@ -49,13 +55,16 @@ export class ProjectsWindow {
     show(type) {
         switch (type) {
             case PROJECT_WINDOW_TYPE.new:
+                this.view.formfields.name.define("readonly", false)
+                this.view.formfields.description.define("readonly", false)
                 this.view.updateBtn.hide()
                 this.view.deleteBtn.hide()
-                this.window.resize()
+                this.view.window.resize()
                 break;
             case PROJECT_WINDOW_TYPE.update:
                 this.view.formfields.name.define("readonly", false)
                 this.view.formfields.description.define("readonly", false)
+                this.view.windowConfirmBtn.define("value", "Сохранить")
                 break;
             case PROJECT_WINDOW_TYPE.show:
                 this.view.formfields.name.define("readonly", true)
@@ -78,6 +87,13 @@ export class ProjectsWindow {
     hide(){
         this.view.window.hide()
     }
+
+    // update(){
+    //     this.hide();
+    //     this.view.formfields.name.define("readonly", false)
+    //     this.view.window.resize()
+    //     this.view.window.show()
+    // }
 }
 
 export const PROJECT_WINDOW_TYPE = {

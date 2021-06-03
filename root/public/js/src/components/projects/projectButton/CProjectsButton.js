@@ -30,6 +30,6 @@ export class ProjectsButton {
     }
 
     showWindow() {
-        this.window.show(PROJECT_WINDOW_TYPE.new)
+        this.window.show(PROJECT_WINDOW_TYPE.show)
     }
 }

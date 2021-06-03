@@ -11,6 +11,9 @@ export class TaskButton {
 
     init(showProjectsViewCB) {
         this.window = new TaskWindow()
+        // this.window.init(
+        //     () => { this.refreshList() }
+        // )
         this.showProjectsView = showProjectsViewCB
     }
     
@@ -37,7 +40,7 @@ export class TaskButton {
     }
 
     showWindow() {
-        this.window.show(TASK_WINDOW_TYPE.done)
+        this.window.show(TASK_WINDOW_TYPE.create)
     }
 
     

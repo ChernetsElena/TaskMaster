@@ -30,6 +30,7 @@ export class Application {
 
         this.tasksButton.init()
         this.projectsButton.init()
+        this.tasks.init()
 
         this.employeesButton.init(() => {
             $$('projectRow').hide()

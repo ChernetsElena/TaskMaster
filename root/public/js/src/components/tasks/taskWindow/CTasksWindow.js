@@ -1,11 +1,17 @@
 import TaskWindowView from './TasksWindowView.js';
+import taskModel from '../../../models/taskModel.js';
 
 
 export class TaskWindow {
     constructor(){
         this.view
         this.type
+        this.onChange
     }
+
+    // init(onChange) {
+    //     this.onChange = onChange
+    // }
     
     config() {
         return TaskWindowView()
@@ -40,12 +46,29 @@ export class TaskWindow {
 
         this.view.formfields.performer.attachEvent("onChange", () => {
             if (this.view.formfields.performer.getValue() == " ") {
-                this.view.formfields.stage.setValue(1)
+                this.view.formfields.stage.setValue(0)
             }
             else {
-                this.view.formfields.stage.setValue(2)
+                this.view.formfields.stage.setValue(1)
             }
         })
+
+        this.view.windowConfirmBtn.attachEvent("onItemClick", () => {
+             switch (this.type) {
+                 case TASK_WINDOW_TYPE.create:
+                    taskModel.createTask(this.fetch())
+                    
+                        this.hide()
+                        break;
+        //              taskModel.createTask(this.fetch()).
+        //             break;
+                 case TASK_WINDOW_TYPE.assigned:
+                     break;
+                 case TASK_WINDOW_TYPE.delete:
+                     break;
+             }
+         })
+
     }
 
     switch(type) {
@@ -61,7 +84,7 @@ export class TaskWindow {
 
     show(type) {
         switch (type) {
-            case TASK_WINDOW_TYPE.new:
+            case TASK_WINDOW_TYPE.create:
                 this.view.formfields.planTimeLabel.hide()
                 this.view.formfields.planTime.hide()
                 this.view.formfields.factTimeLabel.hide()
@@ -107,12 +130,17 @@ export class TaskWindow {
     hide() {
         this.view.window.hide()
     }
+
+    fetch() {
+        return this.view.form.getValues()
+    }
 }
 
 export const TASK_WINDOW_TYPE = {
-    new: 'NEW',
+    create: 'CREATE',
     assigned: 'ASSIGNED',
     inJob: 'INJOB',
     coordination: 'COORDINATION',
-    done: 'done'
+    done: 'DONE',
+    delete: 'DELETE'
 }

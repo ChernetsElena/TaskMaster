@@ -1,13 +1,31 @@
 
 export default function EmployeesWindowView(){
     return {
-        view:"popup",
-        id:"popupEmployee",
-        align: "center",
-        
+        view:"window",
+        id:"windowEmployee",
+        position: "center",
+        modal: true,
+        head: {cols: [
+            {
+                view: 'template',
+                id: 'employeeWindowLabel',
+                css: 'webix_template',
+                template: headText,
+                borderless: true,
+                type:"header",
+                width: 320,
+            },
+            {
+                view: "button",
+                id: "employeeWindowCloseButton",
+                type: "icon",
+                icon: "wxi-close",
+                width: 50,
+            }
+        ]},
         body:{
             view:"form", 
-            id:"formPopupEmployee",
+            id:"formWindowEmployee",
             width: 500,
             elements:[
                 { rows:[
@@ -70,24 +88,17 @@ export default function EmployeesWindowView(){
                         attributes: {required: true}
                     },
                     {cols: [
-                        {width: 80},
+                        {},
                         {
                             view:"button", 
-                            id:"addProjectBtn", 
+                            id:"addEmployeeBtn", 
                             value:"Готово",
                             width: 150,
                             align : 'center',
                             top: 20,
                             css: "webix_primary"
-                        }, 
-                        {
-                            view:"button", 
-                            id:"cancelProjectBtn", 
-                            value:"Отмена",
-                            width: 150,
-                            align : 'center',
-                            top: 20
-                        }, 
+                        },
+                        {} 
                     ]} 
                 ],
                 

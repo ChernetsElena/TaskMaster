@@ -11,12 +11,12 @@ export default function TasksWindowView(){
     let headText = 'Новая задача' 
 
     let TASK_STAGE = [
-        {"id": 1, "value": TASK_STAGE_TYPE.new},
-        {"id": 2, "value": TASK_STAGE_TYPE.assigned},
-        {"id": 3, "value": TASK_STAGE_TYPE.inJob},
-        {"id": 4, "value": TASK_STAGE_TYPE.pause},
-        {"id": 5, "value": TASK_STAGE_TYPE.coordination},
-        {"id": 6, "value": TASK_STAGE_TYPE.done},
+        {"id": 0, "value": TASK_STAGE_TYPE.new},
+        {"id": 1, "value": TASK_STAGE_TYPE.assigned},
+        {"id": 2, "value": TASK_STAGE_TYPE.inJob},
+        {"id": 3, "value": TASK_STAGE_TYPE.pause},
+        {"id": 4, "value": TASK_STAGE_TYPE.coordination},
+        {"id": 5, "value": TASK_STAGE_TYPE.done},
     ]
 
     return {
@@ -56,6 +56,7 @@ export default function TasksWindowView(){
                         view:"text", 
                         label:"Задача",
                         id:"formWindowTaskName", 
+                        name: "taskName",
                         width: 400,
                         labelWidth: 100,
                         align : 'center',
@@ -64,6 +65,7 @@ export default function TasksWindowView(){
                     {
                         view:"textarea", 
                         label:"Описание",
+                        name: "taskDescription",
                         id:"formWindowTaskDescription", 
                         width: 400,
                         height: 150,
@@ -74,6 +76,7 @@ export default function TasksWindowView(){
                         view:"combo", 
                         id:"formWindowTaskPerformer", 
                         label:"Исполнитель", 
+                        name: "taskPerformer",
                         width: 400,
                         labelWidth: 100,
                         align : 'center',
@@ -83,6 +86,7 @@ export default function TasksWindowView(){
                         view:"select", 
                         id:"formWindowTaskStage", 
                         label: "Статус",
+                        name: "taskStatus",
                         labelWidth: 100,
                         width: 400,
                         value: TASK_STAGE_TYPE.new,  
@@ -93,12 +97,13 @@ export default function TasksWindowView(){
                         view:"segmented", 
                         id:"formWindowTaskUrgently", 
                         width: 400,
+                        name: "taskUrgently",
                         value:1, 
                         align : 'center',
                         options:[
-                            { "id":"1", "value":"Нормально" },
-                            { "id":"2", "value":"Срочно" }, 
-                            { "id":"3", "value":"Очень срочно" }
+                            { "id":"0", "value":"Нормально" },
+                            { "id":"1", "value":"Срочно" }, 
+                            { "id":"2", "value":"Очень срочно" }
                         ],
                         css: "segment_btn_task_window",
                         
@@ -116,6 +121,7 @@ export default function TasksWindowView(){
                                 {
                                     view: "timeboard",
                                     id: "formWindowTaskPlanTime",
+                                    name: "taskPlanTime",
                                     twelve: false,
                                     width: 400
                                  },
@@ -133,6 +139,7 @@ export default function TasksWindowView(){
                                 {
                                     view: "timeboard",
                                     id: "formWindowTaskFactTime",
+                                    name: "taskFactTime",
                                     twelve: false,
                                     width: 400
                                  },

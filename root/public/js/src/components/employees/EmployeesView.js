@@ -16,7 +16,9 @@ export default function EmployeesView(){
                         { id: 'position', header: ['Должность', { content:'selectFilter' }], sort: 'string', fillspace: true, },
                         { id:"email",   header:["E-mail", { content: 'textFilter' }], sort: 'string', fillspace: true, },
                         { id:"birth",   header:["Дата рождения", { content: 'textFilter' }], sort: 'string', fillspace: true, },
-                        { id:"", template:"{common.editIcon()}"}
+                        { id:"edit", header: "", template:"{common.editIcon()}"},
+                        { id:"trash", header: "", template:"{common.trashIcon()}"},
+
                         
                     ],
                     data:[
