@@ -1,12 +1,18 @@
 import ProjectsWindowView from './ProjectsWindowView.js';
+import projectModel from '../../../models/projectModel.js'
 
 
 export class ProjectsWindow {
     constructor(){
         this.view
         this.type
+        this.onChange
     }
-    
+
+    init(onChange) {
+        this.onChange = onChange
+    }
+
     config() {
         return ProjectsWindowView()
     }
@@ -29,16 +35,52 @@ export class ProjectsWindow {
             }
         }
 
-        // this.view.updateBtn.attachEvent("onItemClick", () => {
-        //     this.update()
-        // });
 
         this.view.closeBtn.attachEvent("onItemClick", () => {
-            this.view.form.clear();
+            this.clearForm();
             this.view.window.hide();
         });
 
+        this.view.windowConfirmBtn.attachEvent("onItemClick", () => {
+            switch (this.type) {
+                case PROJECT_WINDOW_TYPE.new:
+                    if (this.view.form.validate()) {
+                        projectModel.createProject(this.fetch())
+                        this.onChange()
+                        this.clearForm();
+                        this.hide()
+                        break; 
+                    }
+                    else {
+                        break;
+                    }
+                    
+                case PROJECT_WINDOW_TYPE.update:
+                    this.view.form.validate()
+                    projectModel.updateProject(this.fetch())
+                    this.onChange()
+                    this.clearForm();
+                    this.hide()
+                    break;
+                case PROJECT_WINDOW_TYPE.delete:
+                    this.view.form.validate()
+                    projectModel.deleteProject(this.fetch())
+                    this.onChange()
+                    this.clearForm();
+                    this.hide()
+                    break;
+            }
+        })
 
+        this.view.updateBtn.attachEvent("onItemClick", () => {
+            this.view.window.hide()
+            this.show(PROJECT_WINDOW_TYPE.update)
+        })
+
+        this.view.deleteBtn.attachEvent("onItemClick", () => {
+            this.view.window.hide()
+            this.show(PROJECT_WINDOW_TYPE.delete)
+        })
     }
 
     switch(type) {
@@ -55,29 +97,77 @@ export class ProjectsWindow {
     show(type) {
         switch (type) {
             case PROJECT_WINDOW_TYPE.new:
+                this.view.windowLabel.define("template", "Новый проект")
+                this.view.windowLabel.refresh()
                 this.view.formfields.name.define("readonly", false)
+                this.view.formfields.name.refresh()
                 this.view.formfields.description.define("readonly", false)
+                this.view.formfields.description.refresh()
+                this.view.formfields.colorOne.enable()
+                this.view.formfields.colorTwo.enable()
+                this.view.formfields.teamlead.enable()
+                this.view.windowConfirmBtn.show()
+                this.view.windowConfirmBtn.define("value", "Создать")
+                this.view.windowConfirmBtn.refresh()
                 this.view.updateBtn.hide()
                 this.view.deleteBtn.hide()
                 this.view.window.resize()
                 break;
+
             case PROJECT_WINDOW_TYPE.update:
+                this.view.windowLabel.define("template", "Изменить проект")
+                this.view.windowLabel.refresh()
                 this.view.formfields.name.define("readonly", false)
+                this.view.formfields.name.refresh()
                 this.view.formfields.description.define("readonly", false)
+                this.view.formfields.description.refresh()
+                this.view.formfields.colorOne.enable()
+                this.view.formfields.colorTwo.enable()
+                this.view.formfields.teamlead.enable()
                 this.view.windowConfirmBtn.define("value", "Сохранить")
+                this.view.windowConfirmBtn.refresh()
+                this.view.updateBtn.hide()
+                this.view.deleteBtn.hide()
+                this.view.windowConfirmBtn.show()
+                this.view.window.resize()
                 break;
+
             case PROJECT_WINDOW_TYPE.show:
+                this.view.windowLabel.define("template", "Просмотр проекта")
+                this.view.windowLabel.refresh()
                 this.view.formfields.name.define("readonly", true)
+                this.view.formfields.name.refresh()
                 this.view.formfields.description.define("readonly", true)
+                this.view.formfields.description.refresh()
                 this.view.formfields.colorOne.disable()
                 this.view.formfields.colorTwo.disable()
                 this.view.formfields.teamlead.disable()
+                this.view.updateBtn.show()
+                this.view.deleteBtn.show()
                 this.view.windowConfirmBtn.hide()
+                this.view.window.resize()
+                break;
+
+            case PROJECT_WINDOW_TYPE.delete:
+                this.view.windowLabel.define("template", "Удаление проекта")
+                this.view.windowLabel.refresh()
+                this.view.formfields.name.define("readonly", true)
+                this.view.formfields.name.refresh()
+                this.view.formfields.description.define("readonly", true)
+                this.view.formfields.description.refresh()
+                this.view.formfields.colorOne.disable()
+                this.view.formfields.colorTwo.disable()
+                this.view.formfields.teamlead.disable()
+                this.view.windowConfirmBtn.define("value", "Удалить")
+                this.view.windowConfirmBtn.refresh()
+                this.view.updateBtn.show()
+                this.view.deleteBtn.show()
+                this.view.windowConfirmBtn.show()
                 this.view.window.resize()
                 break;
             
             default:
-                console.error('Неизвестный тип отображения окна для работы с сущностью задачи');
+                console.error('Неизвестный тип отображения окна для работы с сущностью проекта');
                 return;
         }
         this.type = type
@@ -88,16 +178,25 @@ export class ProjectsWindow {
         this.view.window.hide()
     }
 
-    // update(){
-    //     this.hide();
-    //     this.view.formfields.name.define("readonly", false)
-    //     this.view.window.resize()
-    //     this.view.window.show()
-    // }
+    parse(values) {
+        this.view.form.setValues(values)
+    }
+
+    fetch() {
+        return this.view.form.getValues()
+    }
+
+    clearForm() {
+        this.view.form.clear()
+        this.view.form.clearValidation()
+        this.view.formfields.colorOne.setValue("#ffdb5c")
+        this.view.formfields.colorTwo.setValue("#ffacac")
+    }
 }
 
 export const PROJECT_WINDOW_TYPE = {
     new: 'NEW',
     show: 'SHOW',
-    update: 'UPDATE'
+    update: 'UPDATE',
+    delete: 'DELETE'
 }

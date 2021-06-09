@@ -50,6 +50,7 @@ export default function ProjectsWindowView(){
                         {
                             view:"text", 
                             label:"Название проекта",
+                            name: "name",
                             id:"formWindowProjectName", 
                             width: 400,
                             labelWidth: 150,
@@ -64,20 +65,21 @@ export default function ProjectsWindowView(){
                                 label:"Цвета проекта", 
                                 labelWidth: 150,
                                 width: 275,
-                                name:"color",
+                                name:"color_one",
                                 value:"#ffdb5c" 
                             },
                             { 
                                 view:"colorpicker", 
                                 id: "formWindowProjectColorTwo",
                                 width: 125,
-                                name:"color",
+                                name:"color_two",
                                 value:"#ffacac" 
                             }
                         ]},
                     {
                         view:"textarea", 
                         label:"Описание",
+                        name: "description",
                         labelWidth: 150,
                         id:"formWindowProjectDescription", 
                         width: 400,
@@ -87,7 +89,8 @@ export default function ProjectsWindowView(){
                     {
                         view:"combo", 
                         id:"formWindowProjecTeamlead", 
-                        label:"Teamlead", 
+                        label:"Teamlead",
+                        name: "teamlead", 
                         width: 400,
                         labelWidth: 150,
                         align : 'center',
@@ -110,6 +113,11 @@ export default function ProjectsWindowView(){
                 
             },    
         ],
+        rules:{
+            "name":webix.rules.isNotEmpty,
+            "description":webix.rules.isNotEmpty,
+            "teamlead":webix.rules.isNotEmpty,
+        },
         css:{"border-color":"orange"},
     }
     }

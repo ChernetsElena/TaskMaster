@@ -28,8 +28,8 @@ export class Application {
             $$('employeeRow').show()
         })
 
-        this.tasksButton.init()
-        this.projectsButton.init()
+        this.projects.init(this.projectsButton)
+        
         this.tasks.init()
 
         this.employeesButton.init(() => {

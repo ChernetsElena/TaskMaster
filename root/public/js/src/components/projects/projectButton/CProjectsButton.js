@@ -1,5 +1,5 @@
 import ProjectsButtonView from './ProjectsButtonView.js';
-import { ProjectsWindow, PROJECT_WINDOW_TYPE } from '../projectWindow/CProjectsWindow.js';
+import {PROJECT_WINDOW_TYPE } from '../projectWindow/CProjectsWindow.js';
 
 export class ProjectsButton {
     constructor(){
@@ -7,13 +7,11 @@ export class ProjectsButton {
         this.window
     }
 
-    init(showProjectsViewCB) {
-        this.window = new ProjectsWindow()
-        this.showProjectsView = showProjectsViewCB
+    init(projectWindow) {
+        this.window = projectWindow
     }
     
     config() {
-        webix.ui(this.window.config())
         return ProjectsButtonView()
     }
 
@@ -21,8 +19,6 @@ export class ProjectsButton {
         this.view = {
             newProjectBtn: $$('projectsAddButton')
         }
-
-        this.window.attachEvents()
 
         this.view.newProjectBtn.attachEvent("onItemClick", () => {
             this.showWindow()
