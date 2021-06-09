@@ -12,15 +12,18 @@ export default function EmployeesButtonView(){
                     type: "icon",
                     icon: "wxi-angle-left",
                     width: 150,
+                    height: 35,
                     css: "tasks_button_back"
                 },
                 {width: 280},
                 {
                     view:"button", 
+                    type: "icon",
                     id:"employeeButtonAddBtn", 
-                    value:"Добавить сотрудника",
-                    width: 200,
-                    height: 50,
+                    label:"Добавить сотрудника",
+                    icon: "wxi-plus-circle",
+                    width: 170,
+                    height: 35,
                     css: "employee_button_new"
                 },
                 {},
@@ -31,6 +34,6 @@ export default function EmployeesButtonView(){
             {}
         ],
         css:{"background": "linear-gradient(45deg, #A3B1FF, #7388FF)"},
-        height: 100
+        height: 50
     }
 }

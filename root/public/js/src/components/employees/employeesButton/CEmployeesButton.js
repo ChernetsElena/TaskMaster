@@ -15,7 +15,7 @@ export class EmployeesButton {
     }
 
     config() {
-        //webix.ui(this.window.config())
+        webix.ui(this.window.config())
         return EmployeesButtonView()
     }
 
@@ -37,6 +37,6 @@ export class EmployeesButton {
     }
 
     showWindow() {
-        this.window.show(EMPLOYEE_WINDOW_TYPE.update)
+        this.window.show(EMPLOYEE_WINDOW_TYPE.new)
     }
 }

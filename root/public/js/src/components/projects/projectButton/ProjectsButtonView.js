@@ -1,17 +1,20 @@
 export default function ProjectsButtonView(){
     return {
         rows:[
-            {height: 30},
+            {},
             {
                 view:"button", 
+                type: "icon",
+                icon: "wxi-plus-circle",
                 id:"projectsAddButton", 
-                value:"Новый проект",
-                width: 200,
-                height: 50,
+                label:"Новый проект",
+                width: 170,
+                height: 35,
                 align : 'center',
-            }
+            },
+            {}
         ],
         css:{"background": "linear-gradient(45deg, #A3B1FF, #7388FF)"},
-        height: 100
+        height: 50
     }
 }

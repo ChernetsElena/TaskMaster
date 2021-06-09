@@ -2,17 +2,17 @@ export default function TasksView(){
     return {
         css: {"background": "linear-gradient(-45deg, #ffdb5c, #ffacac)"},
         rows: [
-            {
-                view:"search", 
-                id:"filter-list",
-                placeholder:"Поиск по исполнителю...", 
-                align: 'center',
-                width: 600,
-                css: "webix_el_box"    
-            },
+                {
+                    view:"search", 
+                    id:"filter-list",
+                    placeholder:"Поиск по исполнителю...", 
+                    align: 'center',
+                    width: 600,
+                    css: "webix_el_box"    
+                },
         {cols: [
-            {},
-            {rows:[
+            {
+                rows:[
                 {
                     view: "label",
                     label: "Новые задачи",
@@ -26,7 +26,7 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 270
+                        width: 250
                     },
                     drag: false,
                     template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
@@ -52,7 +52,7 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 270
+                        width: 250
                     },
                     drag: false,
                     template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
@@ -79,7 +79,7 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 270
+                        width: 250
                     },
                     drag: false,
                     template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
@@ -106,7 +106,7 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 270
+                        width: 250
                     },
                     drag: false,
                     template:"<div class='overall_tasks' style='background: #v#' ><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
@@ -131,15 +131,18 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 270
+                        width: 250
                     },
                     drag: false,
                     dragscroll:true,
                     template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
-                    data:[]
+                    data:[ { id:6, title:"The Shawshank Redemption", status:"В работе", performer:"Иванов Иван"},
+                    { id:7, title:"The Godfather", status:"В работе", performer:"Иванов Иван"},
+                    { id:8, title:"The Godfather: Part II", status:"В работе", performer:"Иванов Иван"},
+                    { id:9, title:"The Good, the Bad and the Ugly", status:"В работе", performer:"Иванов Иван"}
+                ]
                 },
             ]},
-            {},
         ]}
     ]}  
 }

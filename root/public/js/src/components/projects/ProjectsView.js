@@ -16,7 +16,6 @@ export default function ProjectsView(){
                     view:"dataview",
                     id: "projectsDataview",
                     width:1400,
-                    height:600,
                     borderless:false,
                     xCount: 4,
                     css: "movies",
@@ -39,7 +38,14 @@ export default function ProjectsView(){
                         { "id":11, "title":"Название проектаНазвание проекта", "description":"описаниеописаниеописание", teamlead:"Иванов Иван", color_one: "blue", color_two: "green"},
                         { "id":12, "title":"Название проекта", "description":"описание", teamlead:"Иванов Иван", color_one: "red", color_two: "green"},
                         { "id":13, "title":"Название проекта", "description":"описание", teamlead:"Иванов Иван", color_one: "green", color_two: "green"},
-                        { "id":14, "title":"Название проекта", "description":"описаниеописаниеописаниеописание", teamlead:"Иванов Иван", color_one: "white", color_two: "green"}
+                        { "id":14, "title":"Название проекта", "description":"описаниеописаниеописаниеописание", teamlead:"Иванов Иван", color_one: "white", color_two: "green"},
+                        { "id":15, "title":"Название проектаНазвание проекта", "description":"описаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописаниеописание", teamlead:"Иванов Иван", color_one: "red", color_two: "green"},
+                        { "id":16, "title":"Название проекта", "description":"описаниеописаниеописаниеописаниеописаниеописание", teamlead:"Иванов Иван", color_one: "yellow", color_two: "orange"},
+                        { "id":17, "title":"Название проектаНазвание проектаНазвание проекта", description:"описание", teamlead:"Иванов Иван", color_one: "orange", color_two: "green"},
+                        { "id":18, "title":"Название проектаНазвание проекта", "description":"описаниеописаниеописание", teamlead:"Иванов Иван", color_one: "blue", color_two: "green"},
+                        { "id":19, "title":"Название проекта", "description":"описание", teamlead:"Иванов Иван", color_one: "red", color_two: "green"},
+                        { "id":20, "title":"Название проекта", "description":"описание", teamlead:"Иванов Иван", color_one: "green", color_two: "green"},
+                        { "id":21, "title":"Название проекта", "description":"описаниеописаниеописаниеописание", teamlead:"Иванов Иван", color_one: "white", color_two: "green"}
                     ]
                 },
                 {}   

@@ -1,5 +1,7 @@
 
 export default function EmployeesWindowView(){
+    let headText = 'Добавление сотрудника'
+
     return {
         view:"window",
         id:"windowEmployee",

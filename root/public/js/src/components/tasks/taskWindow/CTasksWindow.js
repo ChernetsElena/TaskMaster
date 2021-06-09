@@ -9,9 +9,9 @@ export class TaskWindow {
         this.onChange
     }
 
-    // init(onChange) {
-    //     this.onChange = onChange
-    // }
+    init(onChange) {
+        this.onChange = onChange
+    }
     
     config() {
         return TaskWindowView()
@@ -87,36 +87,59 @@ export class TaskWindow {
             case TASK_WINDOW_TYPE.create:
                 this.view.formfields.planTimeLabel.hide()
                 this.view.formfields.planTime.hide()
+                this.view.windowLabel.define("template", "Новая задача")
                 this.view.formfields.factTimeLabel.hide()
                 this.view.formfields.factTime.hide()
                 this.view.formfields.stage.disable()
+                this.view.formfields.performer.enable()
                 this.view.window.resize()
                 break;
             case TASK_WINDOW_TYPE.assigned:
                 this.view.formfields.name.define("readonly", true)
+                this.view.formfields.name.define("readonly", true)
+                this.view.windowLabel.define("template", "Задача")
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.performer.disable()
                 this.view.formfields.factTime.disable()
+                this.view.formfields.planTimeLabel.show()
+                this.view.formfields.planTime.show()
+                this.view.formfields.factTimeLabel.show()
+                this.view.formfields.factTime.show()
                 break;
             case TASK_WINDOW_TYPE.inJob:
                 this.view.formfields.name.define("readonly", true)
-                this.view.formfields.description.define("readonly", true)
+                this.view.windowLabel.define("template", "Задача")
                 this.view.formfields.performer.disable()
-                this.view.formfields.factTime.disable()
+                this.view.formfields.factTime.enable()
+                this.view.formfields.stage.enable()
                 this.view.formfields.planTime.disable()
+                this.view.formfields.planTimeLabel.show()
+                this.view.formfields.planTime.show()
+                this.view.formfields.factTimeLabel.show()
+                this.view.formfields.factTime.show()
                 break;
             case TASK_WINDOW_TYPE.coordination:
                 this.view.formfields.name.define("readonly", false)
+                this.view.windowLabel.define("template", "Задача")
                 this.view.formfields.description.define("readonly", false)
                 this.view.formfields.stage.disable()
+                this.view.formfields.planTimeLabel.show()
+                this.view.formfields.planTime.show()
+                this.view.formfields.factTimeLabel.show()
+                this.view.formfields.factTime.show()
                 break;
             case TASK_WINDOW_TYPE.done:
                 this.view.formfields.name.define("readonly", true)
+                this.view.windowLabel.define("template", "Задача")
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.performer.disable()
                 this.view.formfields.stage.disable()
                 this.view.formfields.factTime.disable()
                 this.view.formfields.planTime.disable()
+                this.view.formfields.planTimeLabel.show()
+                this.view.formfields.planTime.show()
+                this.view.formfields.factTimeLabel.show()
+                this.view.formfields.factTime.show()
                 break;
             
             default:
