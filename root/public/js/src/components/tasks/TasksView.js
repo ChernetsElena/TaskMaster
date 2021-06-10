@@ -11,6 +11,7 @@ export default function TasksView(){
                     css: "webix_el_box"    
                 },
         {cols: [
+            {},
             {
                 rows:[
                 {
@@ -143,6 +144,7 @@ export default function TasksView(){
                 ]
                 },
             ]},
+            {}
         ]}
     ]}  
 }

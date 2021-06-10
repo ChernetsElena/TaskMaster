@@ -1,8 +1,0 @@
-﻿[
-    {"id":"1", "position":"1", "name":"Name1", "last_name":"LastName1", "middle_name": "MiddleName1", "email":"email1", "birth": "1.01.2011"},
-    {"id":"2", "position":"1", "name":"Name2", "last_name":"LastName2", "middle_name": "MiddleName2", "email":"email2", "birth": "2.01.2011"},
-    {"id":"3", "position":"1", "name":"Name3", "last_name":"LastName3", "middle_name": "MiddleName3", "email":"email3", "birth": "3.01.2011"},
-    {"id":"4", "position":"1", "name":"Name4", "last_name":"LastName4", "middle_name": "MiddleName4", "email":"email4", "birth": "4.01.2011"},
-    {"id":"5", "position":"1", "name":"Name5", "last_name":"LastName5", "middle_name": "MiddleName5", "email":"email5", "birth": "5.01.2011"},
-    {"id":"6", "position":"1", "name":"Name6", "last_name":"LastName6", "middle_name": "MiddleName6", "email":"email6", "birth": "6.01.2011"}
-]

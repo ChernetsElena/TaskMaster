@@ -29,15 +29,14 @@ export class Application {
         })
 
         this.projects.init(this.projectsButton)
-        
-        this.tasks.init()
-
-        this.employeesButton.init(() => {
+        this.employees.init(this.employeesButton, () => {
             $$('projectRow').hide()
             $$('employeeRow').hide()
             $$('tasksRow').hide()
             $$('projectRow').show()
         })
+        
+        this.tasks.init()
 
         this.tasksButton.init(() => {
             $$('projectRow').hide()
@@ -58,6 +57,7 @@ export class Application {
         this.toolbar.attachEvents()
         this.tasks.attachEvents()
         this.tasksButton.attachEvents()
+        this.employees.attachEvents()
         this.employeesButton.attachEvents()
     }
 

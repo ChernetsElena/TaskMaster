@@ -1,5 +1,5 @@
 
-export default function EmployeesWindowView(){
+export default function EmployeesWindowView(positions){
     let headText = 'Добавление сотрудника'
 
     return {
@@ -17,6 +17,7 @@ export default function EmployeesWindowView(){
                 type:"header",
                 width: 320,
             },
+            {},
             {
                 view: "button",
                 id: "employeeWindowCloseButton",
@@ -34,6 +35,7 @@ export default function EmployeesWindowView(){
                     {
                         view:"text", 
                         label:"Фамилия",
+                        name: "last_name",
                         id:"employeeLastName", 
                         width: 400,
                         labelWidth: 150,
@@ -43,6 +45,7 @@ export default function EmployeesWindowView(){
                     {
                         view:"text", 
                         label:"Имя",
+                        name: "name",
                         id:"employeeFirstName", 
                         width: 400,
                         labelWidth: 150,
@@ -52,6 +55,7 @@ export default function EmployeesWindowView(){
                     {
                         view:"text", 
                         label:"Отчество",
+                        name: "middle_name",
                         id:"employeeMiddleName", 
                         width: 400,
                         labelWidth: 150,
@@ -61,19 +65,18 @@ export default function EmployeesWindowView(){
                     {
                         view:"select", 
                         label:"Должность",
+                        name: "position",
                         id:"employeePosition", 
                         width: 400,
                         labelWidth: 150,
                         align : 'center',
-                        options:[
-                            { "id":1, "value":"Master" },
-                            { "id":2, "value":"Release" }
-                        ],
+                        options: positions,
                         attributes: {required: true}
                     },
                     {
                         view:"text", 
                         label:"E-mail",
+                        name: "email",
                         id:"employeeEmail", 
                         width: 400,
                         labelWidth: 150,
@@ -82,7 +85,9 @@ export default function EmployeesWindowView(){
                     },
                     {
                         view:"datepicker", 
+                        //format: "%Y.%m.%d",
                         label:"Дата рождения",
+                        name: "birth",
                         id:"employeeBirth", 
                         width: 400,
                         labelWidth: 150,

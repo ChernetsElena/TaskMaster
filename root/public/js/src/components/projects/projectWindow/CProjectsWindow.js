@@ -13,8 +13,8 @@ export class ProjectsWindow {
         this.onChange = onChange
     }
 
-    config() {
-        return ProjectsWindowView()
+    config(employees) {
+        return ProjectsWindowView(employees)
     }
 
     attachEvents() {
@@ -56,14 +56,12 @@ export class ProjectsWindow {
                     }
                     
                 case PROJECT_WINDOW_TYPE.update:
-                    this.view.form.validate()
                     projectModel.updateProject(this.fetch())
                     this.onChange()
                     this.clearForm();
                     this.hide()
                     break;
                 case PROJECT_WINDOW_TYPE.delete:
-                    this.view.form.validate()
                     projectModel.deleteProject(this.fetch())
                     this.onChange()
                     this.clearForm();

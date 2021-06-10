@@ -1,4 +1,4 @@
-import { EmployeesWindow, EMPLOYEE_WINDOW_TYPE} from '../employeesWindow/CEmployeesWindow.js';
+import { EMPLOYEE_WINDOW_TYPE } from '../employeesWindow/CEmployeesWindow.js';
 import EmployeesButtonView from './EmployeesButtonView.js'
 
 
@@ -9,13 +9,12 @@ export class EmployeesButton {
         this.showProjectsView
     }
 
-    init(showProjectsViewCB){
-        this.window = new EmployeesWindow()
+    init(employeeWindow, showProjectsViewCB){
+        this.window = employeeWindow
         this.showProjectsView = showProjectsViewCB
     }
 
     config() {
-        webix.ui(this.window.config())
         return EmployeesButtonView()
     }
 
@@ -25,7 +24,6 @@ export class EmployeesButton {
              addEmployeeBtn: $$('employeeButtonAddBtn')
          }
 
-         this.window.attachEvents()
 
          this.view.addEmployeeBtn.attachEvent("onItemClick", () => {
             this.showWindow()

@@ -1,4 +1,4 @@
-export default function ProjectsWindowView(){
+export default function ProjectsWindowView(employees){
     let headText = 'Новый проект'
     
     return {
@@ -94,7 +94,7 @@ export default function ProjectsWindowView(){
                         width: 400,
                         labelWidth: 150,
                         align : 'center',
-                        options:["One", "Two", "Three"]
+                        options: employees
                     },
                     {cols: [
                         {},

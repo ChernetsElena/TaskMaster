@@ -1,13 +1,20 @@
 import EmployeesWindowView from './EmployeesWindowView.js'
+import employeeModel from '../../../models/employeeModel.js'
+
 
 export class EmployeesWindow {
     constructor(){
         this.view
         this.type
+        this.onChange
     }
 
-    config() {
-        return EmployeesWindowView()
+    init(onChange) {
+        this.onChange = onChange
+    }
+
+    config(positions) {
+        return EmployeesWindowView(positions)
     }
 
     attachEvents() {
@@ -28,9 +35,35 @@ export class EmployeesWindow {
         }
 
         this.view.closeBtn.attachEvent("onItemClick", () => {
-            this.view.form.clear()
+            this.clearForm()
             this.view.window.hide()
         })
+
+        this.view.windowConfirmBtn.attachEvent("onItemClick", () => {
+            switch (this.type) {
+                case EMPLOYEE_WINDOW_TYPE.new:
+                        employeeModel.createEmployee(this.fetch())
+                        this.onChange()
+                        this.clearForm();
+                        this.hide()
+                        break; 
+                    
+                case EMPLOYEE_WINDOW_TYPE.update:
+                    employeeModel.updateEmployee(this.fetch())
+                    this.onChange()
+                    this.clearForm();
+                    this.hide()
+                    break;
+                case EMPLOYEE_WINDOW_TYPE.delete:
+                    employeeModel.deleteEmployee(this.fetch())
+                    this.onChange()
+                    this.clearForm();
+                    this.hide()
+                    break;
+            }
+        })
+
+
     }
 
     switch(type) {
@@ -47,19 +80,58 @@ export class EmployeesWindow {
     show(type) {
         switch (type) {
             case EMPLOYEE_WINDOW_TYPE.new:
+                this.view.windowLabel.define("template", "Новый сотрудник")
+                this.view.windowLabel.refresh()
+                this.view.formfields.name.define("readonly", false)
+                this.view.formfields.name.refresh()
+                this.view.formfields.lastName.define("readonly", false)
+                this.view.formfields.lastName.refresh()
+                this.view.formfields.middleName.define("readonly", false)
+                this.view.formfields.middleName.refresh()
+                this.view.formfields.position.enable()
+                this.view.formfields.position.refresh()
+                this.view.formfields.email.define("readonly", false)
+                this.view.formfields.email.refresh()
+                this.view.formfields.birth.define("readonly", false)
+                this.view.formfields.birth.refresh()
+                this.view.windowConfirmBtn.define("value", "Добавить")
+                this.view.windowConfirmBtn.refresh()
                 break;
             case EMPLOYEE_WINDOW_TYPE.update:
                 this.view.windowLabel.define("template", "Редактирование")
+                this.view.windowLabel.refresh()
+                this.view.formfields.name.define("readonly", false)
+                this.view.formfields.name.refresh()
+                this.view.formfields.lastName.define("readonly", false)
+                this.view.formfields.lastName.refresh()
+                this.view.formfields.middleName.define("readonly", false)
+                this.view.formfields.middleName.refresh()
+                this.view.formfields.position.enable()
+                this.view.formfields.position.refresh()
+                this.view.formfields.email.define("readonly", false)
+                this.view.formfields.email.refresh()
+                this.view.formfields.birth.define("readonly", false)
+                this.view.formfields.birth.refresh()
                 this.view.windowConfirmBtn.define("value", "Сохранить")
+                this.view.windowConfirmBtn.refresh()
                 break;
             case EMPLOYEE_WINDOW_TYPE.delete:
+                this.view.windowLabel.define("template", "Удаление")
+                this.view.windowLabel.refresh()
                 this.view.formfields.name.define("readonly", true)
+                this.view.formfields.name.refresh()
                 this.view.formfields.lastName.define("readonly", true)
+                this.view.formfields.lastName.refresh()
                 this.view.formfields.middleName.define("readonly", true)
+                this.view.formfields.middleName.refresh()
+                this.view.formfields.position.disable()
+                this.view.formfields.position.refresh()
                 this.view.formfields.email.define("readonly", true)
+                this.view.formfields.email.refresh()
                 this.view.formfields.birth.define("readonly", true)
-                this.view.windowConfirmBtn.hide()
-                this.view.window.resize()
+                this.view.formfields.birth.refresh()
+                this.view.windowConfirmBtn.define("value", "Удалить")
+                this.view.windowConfirmBtn.refresh()
                 break;
             
             default:
@@ -72,6 +144,18 @@ export class EmployeesWindow {
 
     hide(){
         this.view.window.hide()
+    }
+
+    parse(values) {
+        this.view.form.setValues(values)
+    }
+
+    fetch() {
+        return this.view.form.getValues()
+    }
+
+    clearForm() {
+        this.view.form.clear()
     }
 
 }
