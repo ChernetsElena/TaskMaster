@@ -42,11 +42,11 @@ export class EmployeesWindow {
         this.view.windowConfirmBtn.attachEvent("onItemClick", () => {
             switch (this.type) {
                 case EMPLOYEE_WINDOW_TYPE.new:
-                        employeeModel.createEmployee(this.fetch())
-                        this.onChange()
-                        this.clearForm();
-                        this.hide()
-                        break; 
+                    employeeModel.createEmployee(this.fetch())
+                    this.onChange()
+                    this.clearForm();
+                    this.hide()
+                    break; 
                     
                 case EMPLOYEE_WINDOW_TYPE.update:
                     employeeModel.updateEmployee(this.fetch())

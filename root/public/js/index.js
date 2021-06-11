@@ -10,6 +10,8 @@ import { EmployeesWindow } from "./src/components/employees/employeesWindow/CEmp
 import { EmployeesButton } from "./src/components/employees/employeesButton/CEmployeesButton.js";
 import { Application } from "./src/components/Application.js"
 webix.ready(() => {
+    webix.i18n.setLocale("ru-RU")
+    webix.Date.startOnMonday = true;
     let app = new Application();
     app.init()
     webix.ui(app.config()).show()

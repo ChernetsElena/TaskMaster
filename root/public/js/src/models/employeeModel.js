@@ -2,37 +2,13 @@ import {dataEmployees, dataPositions} from '../data/dataEmployees.js'
 import {Employee} from './entities/employee.js'
 import Model from '../../../js/helpers/model.js'
 
-const monthName = {
-    "0": "января",
-    "1": "февраля",
-    "2": "марта",
-    "3": "апреля",
-    "4": "мая",
-    "5": "июня",
-    "6": "июля",
-    "7": "августа",
-    "8": "сентября",
-    "9": "октября",
-    "10": "ноября",
-    "11": "декабря"
-}
 class EmployeeModel extends Model{
     constructor(){
         super()
     }
 
     createEmployee(dataWindow) {
-        let year = dataWindow.birth.getFullYear()
-        let month = dataWindow.birth.getMonth() + 1
-        let day = dataWindow.birth.getDate()
-        if (month < 10){
-            month = '0' + month
-        }
-        if (day < 10){
-            day = '0' + day
-        }
-        let dateOfBirth = year + '-' + month + '-' + day
-        console.log(dataWindow.position)
+        let date = JSON.stringify(dataWindow.birth)
         dataEmployees.push(new Employee(
             Number(dataEmployees[dataEmployees.length-1].id) + 1, 
             dataWindow.position, 
@@ -40,7 +16,7 @@ class EmployeeModel extends Model{
             dataWindow.last_name, 
             dataWindow.middle_name, 
             dataWindow.email, 
-            dateOfBirth)
+            dataWindow.birth)
         )
         console.log(dataEmployees)
     }

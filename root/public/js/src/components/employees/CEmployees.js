@@ -1,30 +1,31 @@
 import EmployeesView from './EmployeesView.js'
 import {EmployeesWindow, EMPLOYEE_WINDOW_TYPE} from './employeesWindow/CEmployeesWindow.js';
-import {dataEmployees} from "../../data/dataEmployees.js";
 import employeeModel from '../../models/employeeModel.js'
+import {FormatDate, BirthToDate} from '../../../helpers/dateFormatter.js'
 
 
 export class Employees {
     constructor(){
         this.view
         this.window = new EmployeesWindow()
-        this.dataEmployees = dataEmployees
-        //this.employees
+        this.employees
         this.employeesButton
         this.positions
+        this.FormatDate = FormatDate
+        // this.BirthToDate = BirthToDate
     }
 
     init (employeesButton, showProjectsViewCB) {
         this.employeesButton = employeesButton
         this.employeesButton.init(this.window, showProjectsViewCB)
         this.window.init(
-            () => { this.refreshView(this.dataEmployees) }
+            () => { this.refreshView(this.employees) }
         )
         this.positions = []
         employeeModel.getPositions().map((position) =>{
             this.positions.push(position.value)
         })
-        //this.employees = []
+        this.employees = []
     }
 
     config() {
@@ -39,14 +40,19 @@ export class Employees {
 
         this.window.attachEvents()
 
-        // this.dataEmployees.map((employee) => {
-        //     this.
-        // })
-
-        this.refreshView(this.dataEmployees)
+        this.employees = employeeModel.getEmployees()
+        this.employees.map((employee) => {
+            employee.birth = this.FormatDate(employee.birth)
+        })
+        this.refreshView(this.employees)
 
         this.view.employeesTable.attachEvent("onItemClick", (id) => {
             let selectedEmployee = this.view.employeesTable.getItem(id)
+            //let dateFromBirth = this.BirthToDate(selectedEmployee.birth)
+            
+            //let employeeForParse = Object.assign({}, selectedEmployee);
+            //employeeForParse.birth = dateFromBirth
+            
             if (id.column == 'edit') {
                 this.window.parse(selectedEmployee)
                 this.showWindow(EMPLOYEE_WINDOW_TYPE.update);
@@ -62,6 +68,7 @@ export class Employees {
     showWindow(type) {
         this.window.show(type)
     }
+
 
     refreshView(data) {
         this.view.employeesTable.clearAll()

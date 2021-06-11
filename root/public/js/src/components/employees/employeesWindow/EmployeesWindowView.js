@@ -85,7 +85,7 @@ export default function EmployeesWindowView(positions){
                     },
                     {
                         view:"datepicker", 
-                        //format: "%Y.%m.%d",
+                        
                         label:"Дата рождения",
                         name: "birth",
                         id:"employeeBirth", 

@@ -63,8 +63,10 @@ export class TaskWindow {
         //              taskModel.createTask(this.fetch()).
         //             break;
                  case TASK_WINDOW_TYPE.assigned:
+                    taskModel.createTask(this.fetch())
                      break;
                  case TASK_WINDOW_TYPE.delete:
+                    taskModel.createTask(this.fetch())
                      break;
              }
          })

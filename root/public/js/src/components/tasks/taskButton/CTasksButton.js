@@ -40,7 +40,7 @@ export class TaskButton {
     }
 
     showWindow() {
-        this.window.show(TASK_WINDOW_TYPE.create)
+        this.window.show(TASK_WINDOW_TYPE.assigned)
     }
 
     

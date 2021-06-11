@@ -29,8 +29,9 @@ class TaskModel {
     }
 
     createTask(data) {
-        this.tasks.push(new Task(this.tasks.length + 1, 1, data.taskStatus, data.taskName, data.taskDescription, data.taskPerformer, data.taskUrgently, '', ''))
-        console.log(this.tasks)
+        console.log(data.taskPlanTime.getHours(), data.taskPlanTime.getMinutes())
+       // this.tasks.push(new Task(this.tasks.length + 1, 1, data.taskStatus, data.taskName, data.taskDescription, data.taskPerformer, data.taskUrgently, '', ''))
+        //console.log(this.tasks)
     }
 
 
