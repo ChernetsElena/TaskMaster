@@ -28,22 +28,31 @@ export class Application {
             $$('employeeRow').show()
         })
 
-        this.projects.init(this.projectsButton)
+        this.projects.init(
+            this.projectsButton, 
+            this.tasks,
+            this.tasksButton,
+            () => {
+                $$('projectRow').hide()
+                $$('employeeRow').hide()
+                $$('tasksRow').hide()
+                $$('projectRow').show()
+            },
+            () => {
+                $$('projectRow').hide()
+                $$('employeeRow').hide()
+                $$('tasksRow').hide()
+                $$('tasksRow').show()
+        })
+
         this.employees.init(this.employeesButton, () => {
             $$('projectRow').hide()
             $$('employeeRow').hide()
             $$('tasksRow').hide()
             $$('projectRow').show()
         })
-        
-        this.tasks.init()
 
-        this.tasksButton.init(() => {
-            $$('projectRow').hide()
-            $$('employeeRow').hide()
-            $$('tasksRow').hide()
-            $$('projectRow').show()
-        })
+        //this.tasksButton.init()
     }
 
     attachEvents() {

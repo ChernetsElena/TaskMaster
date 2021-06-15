@@ -9,16 +9,12 @@ export class TaskButton {
         this.showProjectsView
     }
 
-    init(showProjectsViewCB) {
-        this.window = new TaskWindow()
-        // this.window.init(
-        //     () => { this.refreshList() }
-        // )
+    init( projectWindow, showProjectsViewCB ) {
+        this.window = projectWindow
         this.showProjectsView = showProjectsViewCB
     }
     
     config() {
-        webix.ui(this.window.config())
         return TaskButtonView()
     }
 
@@ -27,8 +23,6 @@ export class TaskButton {
             toProjectsBtn: $$('tasksButtonToProjectsBtn'),
             newTaskBtn: $$('tasksButtonNewTaskBtn')
         }
-
-        this.window.attachEvents()
 
         this.view.newTaskBtn.attachEvent("onItemClick", () => {
             this.showWindow()
@@ -40,7 +34,7 @@ export class TaskButton {
     }
 
     showWindow() {
-        this.window.show(TASK_WINDOW_TYPE.assigned)
+        this.window.show(TASK_WINDOW_TYPE.new)
     }
 
     

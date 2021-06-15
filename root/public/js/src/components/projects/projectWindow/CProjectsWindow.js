@@ -35,7 +35,6 @@ export class ProjectsWindow {
             }
         }
 
-
         this.view.closeBtn.attachEvent("onItemClick", () => {
             this.clearForm();
             this.view.window.hide();
@@ -61,6 +60,7 @@ export class ProjectsWindow {
                     this.clearForm();
                     this.hide()
                     break;
+                    
                 case PROJECT_WINDOW_TYPE.delete:
                     projectModel.deleteProject(this.fetch())
                     this.onChange()

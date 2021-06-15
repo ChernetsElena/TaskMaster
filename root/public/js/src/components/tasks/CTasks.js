@@ -1,19 +1,35 @@
 import TasksView from './TasksView.js';
 import { TaskWindow, TASK_WINDOW_TYPE } from './taskWindow/CTasksWindow.js'
 import taskModel from '../../models/taskModel.js'
+import employeeModel from '../../models/employeeModel.js'
 
 export class Tasks {
     constructor(){
         this.view
         this.window = new TaskWindow()
-        this.dataDoneList = taskModel.tasksDone
+        this.tasksButton
+        this.names
     }
 
-    init(){
+    init(tasksButton){
         this.window = new TaskWindow()
+
+        this.tasksButton = tasksButton
+
+        this.tasksButton.init(this.window)
+
+        this.window.init(
+            () => { this.refreshView(this.tasksData) }
+        )
+
+        this.names = []
+        employeeModel.getEmployees().map((employee) => {
+            this.names.push(`${employee.last_name} ${employee.name}`)
+        })
     }
 
     config() {
+        webix.ui(this.window.config(this.names))
         return TasksView()
     }
 
@@ -26,6 +42,8 @@ export class Tasks {
             coordinationList: $$('tasksCoordinationList'),
             doneList: $$('tasksDoneList'),
         }
+
+        this.window.attachEvents()
 
         this.view.filterList.attachEvent("onTimedKeyPress",() => { 
             var value = this.view.filterList.getValue().toLowerCase(); 
@@ -46,27 +64,15 @@ export class Tasks {
             })
         });
 
-        this.window.attachEvents()
-
-
-
         this.view.newList.attachEvent("onSelectChange", () => {
             let id = this.view.newList.getSelectedId();
             this.showWindow(TASK_WINDOW_TYPE.assigned);
-            // this.view.inJobList.unselectAll();
-            // this.view.coordinationList.unselectAll();
-            // this.view.doneList.unselectAll();
-            // this.view.assignedList.unselectAll();
             this.view.newList.unselectAll();
-            this.refresh(this.dataDoneList)
         })
-         this.view.assignedList.attachEvent("onSelectChange", () => {
+
+        this.view.assignedList.attachEvent("onSelectChange", () => {
             let id = this.view.assignedList.getSelectedId();
             this.showWindow(TASK_WINDOW_TYPE.assigned)
-            // this.view.newList.unselectAll();
-            // this.view.inJobList.unselectAll();
-            // this.view.coordinationList.unselectAll();
-            // this.view.doneList.unselectAll();
             this.view.assignedList.unselectAll();
          })
          this.view.inJobList.attachEvent("onSelectChange", () => {
@@ -102,8 +108,40 @@ export class Tasks {
         this.window.show(type)
     }
 
-    refresh(data) {
+    refreshView(tasksData) {
+        let newTasks = []
+        let assignedTasks = []
+        let inJobTasks = []
+        let coordinationTasks = []
+        let doneTasks = []
+
+        tasksData.map((task) => {
+            if (task.status == 0) {
+                newTasks.push(task)
+            } 
+            if (task.status == 1) {
+                assignedTasks.push(task)
+            }
+            if (task.status == 2) {
+                inJobTasks.push(task)
+            }
+            if (task.status == 3) {
+                coordinationTasks.push(task)
+            }
+            if (task.status == 4) {
+                doneTasks.push(task)
+            }
+        })
+
+        this.view.newList.clearAll()
+        this.view.newList.parse(newTasks)
+        this.view.assignedList.clearAll()
+        this.view.assignedList.parse(assignedTasks)
+        this.view.inJobList.clearAll()
+        this.view.inJobList.parse(inJobTasks)
         this.view.coordinationList.clearAll()
-        this.view.coordinationList.parse(data)
+        this.view.coordinationList.parse(coordinationTasks)
+        this.view.doneList.clearAll()
+        this.view.doneList.parse(doneTasks)
     }
 }

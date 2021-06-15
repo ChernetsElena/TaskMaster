@@ -13,8 +13,8 @@ export class TaskWindow {
         this.onChange = onChange
     }
     
-    config() {
-        return TaskWindowView()
+    config(employees) {
+        return TaskWindowView(employees)
     }
 
     attachEvents() {
@@ -57,11 +57,8 @@ export class TaskWindow {
              switch (this.type) {
                  case TASK_WINDOW_TYPE.create:
                     taskModel.createTask(this.fetch())
-                    
                         this.hide()
                         break;
-        //              taskModel.createTask(this.fetch()).
-        //             break;
                  case TASK_WINDOW_TYPE.assigned:
                     taskModel.createTask(this.fetch())
                      break;

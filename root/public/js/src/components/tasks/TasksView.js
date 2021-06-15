@@ -27,16 +27,11 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 250
+                        width: 230
                     },
                     drag: false,
-                    template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
-                    data:[
-                        { id:1, title:"The Shawshank Redemption", status:"Новая", performer:"Иванов Иван"},
-                        { id:2, title:"The Godfather", status:"Новая", performer:"Иванов Иван"},
-                        { id:3, title:"The Godfather: Part II", status:"Новая", performer:"Иванов Иван"},
-                        { id:4, title:"The Good, the Bad and the Ugly", status:"Новая", performer:"Иванов Иван"}
-                    ]
+                    template:"<div class='overall_tasks'><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    data:[]
                 },
             ]},
             {rows: [
@@ -53,16 +48,11 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 250
+                        width: 230
                     },
                     drag: false,
-                    template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
-                    data:[
-                        { id:1, title:"The Shawshank Redemption", status:"Назначена", performer:"Иванов Иван"},
-                        { id:2, title:"The Godfather", status:"Назначена", performer:"Иванов Иван"},
-                        { id:3, title:"The Godfather: Part II", status:"Назначена", performer:"Иванов Иван"},
-                        { id:4, title:"The Good, the Bad and the Ugly", status:"Назначена", performer:"Иванов Иван"}
-                    ]
+                    template:"<div class='overall_tasks'><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    data: []
                 },
             ]},
             
@@ -80,16 +70,11 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 250
+                        width: 230
                     },
                     drag: false,
-                    template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
-                    data:[
-                        { id:1, title:"The Shawshank Redemption", status:"В работе", performer:"Иванов Иван"},
-                        { id:2, title:"The Godfather", status:"В работе", performer:"Иванов Иван"},
-                        { id:3, title:"The Godfather: Part II", status:"В работе", performer:"Иванов Иван"},
-                        { id:4, title:"The Good, the Bad and the Ugly", status:"В работе", performer:"Иванов Иван"}
-                    ]
+                    template:"<div class='overall_tasks'><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    data: []
                 },
             ]},
            
@@ -107,14 +92,11 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 250
+                        width: 230
                     },
                     drag: false,
-                    template:"<div class='overall_tasks' style='background: #v#' ><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
-                    data:[
-                        { id:1, title:"The Shawshank Redemption", status:"Согласование", performer:"Иванов Иван", v:"red"},
-    
-                    ]
+                    template:"<div class='overall_tasks' style='background: #v#' ><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    data: []
                 },
             ]},
            
@@ -132,16 +114,12 @@ export default function TasksView(){
                     select:true,
                     type: {
                         height: 140,
-                        width: 250
+                        width: 230
                     },
                     drag: false,
                     dragscroll:true,
-                    template:"<div class='overall_tasks'><div class ='title_tasks'>#title#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
-                    data:[ { id:6, title:"The Shawshank Redemption", status:"В работе", performer:"Иванов Иван"},
-                    { id:7, title:"The Godfather", status:"В работе", performer:"Иванов Иван"},
-                    { id:8, title:"The Godfather: Part II", status:"В работе", performer:"Иванов Иван"},
-                    { id:9, title:"The Good, the Bad and the Ugly", status:"В работе", performer:"Иванов Иван"}
-                ]
+                    template:"<div class='overall_tasks'><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    data: []
                 },
             ]},
             {}

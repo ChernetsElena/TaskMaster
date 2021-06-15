@@ -17,17 +17,16 @@ export default function ApplicationView(
                 id: "appMultiview",
                 cells: [
                     {
-                        id: "tasksRow",
-                        rows: [
-                        Tasks.config(),
-                        TasksButton.config(),
-                    ]},
-
-                    {
                         id: "projectRow",
                         rows: [
                         Project.config(),
                         ProjectsButton.config()
+                    ]},
+                    {
+                        id: "tasksRow",
+                        rows: [
+                        Tasks.config(),
+                        TasksButton.config(),
                     ]},
 
                     {

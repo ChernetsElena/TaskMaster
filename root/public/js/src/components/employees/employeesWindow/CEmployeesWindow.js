@@ -62,8 +62,6 @@ export class EmployeesWindow {
                     break;
             }
         })
-
-
     }
 
     switch(type) {

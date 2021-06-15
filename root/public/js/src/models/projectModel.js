@@ -2,15 +2,20 @@ import {dataProjects} from '../data/dataProjects.js'
 import {Project} from './entities/project.js'
 import Model from '../../../js/helpers/model.js'
 
-
 class ProjectModel extends Model{
     constructor(){
         super()
     }
 
-
     createProject(dataWindow) {
-        dataProjects.push(new Project(dataProjects.length + 1, dataWindow.name, dataWindow.description, dataWindow.teamlead, dataWindow.color_one, dataWindow.color_two))
+        dataProjects.push(new Project(
+            Number(dataProjects[dataProjects.length-1].id) + 1,
+            dataWindow.name, 
+            dataWindow.description, 
+            dataWindow.teamlead, 
+            dataWindow.color_one, 
+            dataWindow.color_two)
+        )
         //console.log(this.post('NEW_PROJECT', dataWindow))
     }
 
@@ -26,6 +31,10 @@ class ProjectModel extends Model{
         let indexOfDeleteProject = dataProjects.indexOf(deleteProject)
         dataProjects.splice(indexOfDeleteProject, 1)
         console.log(dataProjects)
+    }
+
+    getProjects() {
+        return dataProjects
     }
 }
 

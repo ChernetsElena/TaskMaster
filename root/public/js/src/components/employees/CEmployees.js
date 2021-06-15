@@ -32,7 +32,7 @@ export class Employees {
         webix.ui(this.window.config(this.positions))
         return EmployeesView()
     }
-
+    
     attachEvents() {
         this.view = {
             employeesTable: $$('employeeDatatable'),
