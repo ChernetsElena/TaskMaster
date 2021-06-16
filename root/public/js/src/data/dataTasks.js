@@ -12,3 +12,11 @@
     {"id":"11", "projectID":"3", "status": "4", "name":"Task5", "description":"Description5", "performer": "Performer2", "urgently":"1", "plan_time": "01:00", "fact_time": "01:30"},
     {"id":"12", "projectID":"4", "status": "5", "name":"Task6", "description":"Description6", "performer": "Performer1", "urgently":"2", "plan_time": "01:00", "fact_time": "01:30"}
 ]
+
+
+// 0 - new
+// 1 - assigned
+// 2 - inJob
+// 3 - pause
+// 4 - coordination
+// 5 - done

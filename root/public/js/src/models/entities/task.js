@@ -1,7 +1,7 @@
 export class Task {
     constructor(
         id,
-        project,  
+        projectID,  
         status,
         name, 
         description, 
@@ -11,7 +11,7 @@ export class Task {
         fact_time
     ){
         this.id = id,
-        this.project = project,
+        this.projectID = projectID,
         this.status = status
         this.name = name
         this.description = description

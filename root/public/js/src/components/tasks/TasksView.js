@@ -4,7 +4,7 @@ export default function TasksView(){
         rows: [
                 {
                     view:"search", 
-                    id:"filter-list",
+                    id:"filterList",
                     placeholder:"Поиск по исполнителю...", 
                     align: 'center',
                     width: 600,

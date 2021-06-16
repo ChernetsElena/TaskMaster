@@ -9,18 +9,20 @@ export class Tasks {
         this.window = new TaskWindow()
         this.tasksButton
         this.names
+        this.projectId
     }
 
-    init(tasksButton){
+    init(tasksButton, showProjectsViewCB){
         this.window = new TaskWindow()
 
         this.tasksButton = tasksButton
 
-        this.tasksButton.init(this.window)
+        this.tasksButton.init(this.window, showProjectsViewCB)
 
-        this.window.init(
-            () => { this.refreshView(this.tasksData) }
-        )
+        this.window.init(() => { 
+            this.tasksData = taskModel.getTasks(this.projectId)
+            this.refreshView(this.tasksData, this.projectId) 
+        })
 
         this.names = []
         employeeModel.getEmployees().map((employee) => {
@@ -35,7 +37,7 @@ export class Tasks {
 
     attachEvents(){
         this.view = {
-            filterList: $$('filter-list'),
+            filterList: $$('filterList'),
             newList: $$('tasksNewList'),
             assignedList: $$('tasksAssignedList'),
             inJobList: $$('tasksInJobList'),
@@ -64,51 +66,51 @@ export class Tasks {
             })
         });
 
-        this.view.newList.attachEvent("onSelectChange", () => {
-            let id = this.view.newList.getSelectedId();
-            this.showWindow(TASK_WINDOW_TYPE.assigned);
+        this.view.newList.attachEvent("onSelectChange", (id) => {
+            let selectedTask = this.view.newList.getItem(id)
+            this.window.parse(selectedTask)
+            this.showWindow(TASK_WINDOW_TYPE.new);
             this.view.newList.unselectAll();
         })
 
-        this.view.assignedList.attachEvent("onSelectChange", () => {
-            let id = this.view.assignedList.getSelectedId();
+        this.view.assignedList.attachEvent("onSelectChange", (id) => {
+            let selectedTask = this.view.assignedList.getItem(id)
+            this.window.parse(selectedTask)
             this.showWindow(TASK_WINDOW_TYPE.assigned)
             this.view.assignedList.unselectAll();
-         })
-         this.view.inJobList.attachEvent("onSelectChange", () => {
-            let id = this.view.inJobList.getSelectedId();
+        })
+
+        this.view.inJobList.attachEvent("onSelectChange", (id) => {
+            let selectedTask = this.view.inJobList.getItem(id)
+            this.window.parse(selectedTask)
             this.showWindow(TASK_WINDOW_TYPE.inJob);
-            // this.view.newList.unselectAll();
-            // this.view.coordinationList.unselectAll();
-            // this.view.doneList.unselectAll();
-            // this.view.assignedList.unselectAll();
             this.view.inJobList.unselectAll();
-         })
-         this.view.coordinationList.attachEvent("onSelectChange", () => {
-            let id = this.view.coordinationList.getSelectedId();
+        })
+
+        this.view.coordinationList.attachEvent("onSelectChange", (id) => {
+            let selectedTask = this.view.coordinationList.getItem(id)
+            this.window.parse(selectedTask)
             this.showWindow(TASK_WINDOW_TYPE.coordination)
-            // this.view.newList.unselectAll();
-            // this.view.inJobList.unselectAll();
-            // this.view.doneList.unselectAll();
-            // this.view.assignedList.unselectAll();
             this.view.coordinationList.unselectAll();
-         })
-         this.view.doneList.attachEvent("onSelectChange", () => {
-            let id = this.view.doneList.getSelectedId();
+        })
+
+        this.view.doneList.attachEvent("onSelectChange", (id) => {
+            let selectedTask = this.view.doneList.getItem(id)
+            this.window.parse(selectedTask)
             this.showWindow(TASK_WINDOW_TYPE.done);
-            // this.view.newList.unselectAll();
-            // this.view.inJobList.unselectAll();
-            // this.view.assignedList.unselectAll();
-            // this.view.coordinationList.unselectAll();
             this.view.doneList.unselectAll();
-         })
+        })
     }
 
     showWindow(type) {
+        console.log(type)
         this.window.show(type)
     }
 
-    refreshView(tasksData) {
+    refreshView(tasksData, projectId) {
+        this.projectId = projectId
+        this.window.setId(projectId)
+
         let newTasks = []
         let assignedTasks = []
         let inJobTasks = []
@@ -126,9 +128,12 @@ export class Tasks {
                 inJobTasks.push(task)
             }
             if (task.status == 3) {
-                coordinationTasks.push(task)
+                inJobTasks.push(task)
             }
             if (task.status == 4) {
+                coordinationTasks.push(task)
+            }
+            if (task.status == 5) {
                 doneTasks.push(task)
             }
         })

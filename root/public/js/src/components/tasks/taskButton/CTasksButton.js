@@ -1,5 +1,5 @@
 import TaskButtonView from './TasksButtonView.js';
-import { TaskWindow, TASK_WINDOW_TYPE } from '../taskWindow/CTasksWindow.js'
+import { TASK_WINDOW_TYPE } from '../taskWindow/CTasksWindow.js'
 
 
 export class TaskButton {
@@ -34,8 +34,6 @@ export class TaskButton {
     }
 
     showWindow() {
-        this.window.show(TASK_WINDOW_TYPE.new)
+        this.window.show(TASK_WINDOW_TYPE.create)
     }
-
-    
-}
+} 

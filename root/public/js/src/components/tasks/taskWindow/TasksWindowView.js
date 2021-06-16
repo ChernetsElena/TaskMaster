@@ -7,7 +7,7 @@ export const TASK_STAGE_TYPE = {
     done: 'Решена' 
 }
 
-export default function TasksWindowView(){
+export default function TasksWindowView(employees){
     let headText = 'Новая задача' 
 
     let TASK_STAGE = [
@@ -30,15 +30,23 @@ export default function TasksWindowView(){
                 template: headText,
                 borderless: true,
                 type:"header",
-                width: 200,
+                width: 300,
             },
-            {width: 650},
+            {width: 580},
+            {
+                view: "button",
+                id: "taskWindowDeleteButton",
+                type: "icon",
+                icon: "wxi-trash",
+                width: 50,
+
+            },
             {
                 view: "button",
                 id: "taskWindowCloseButton",
                 type: "icon",
                 icon: "wxi-close",
-                width: 100,
+                width: 50,
 
             }
         ]},
@@ -56,16 +64,26 @@ export default function TasksWindowView(){
                         view:"text", 
                         label:"Задача",
                         id:"formWindowTaskName", 
-                        name: "taskName",
+                        name: "name",
                         width: 400,
                         labelWidth: 100,
                         align : 'center',
                         attributes: {required: true},
-                    },      
+                    }, 
+                    {
+                        view:"text", 
+                        label:"ID проекта",
+                        id:"formWindowProjectID", 
+                        name: "projectID",
+                        width: 400,
+                        labelWidth: 100,
+                        align : 'center',
+                        hidden: true
+                    },     
                     {
                         view:"textarea", 
                         label:"Описание",
-                        name: "taskDescription",
+                        name: "description",
                         id:"formWindowTaskDescription", 
                         width: 400,
                         height: 150,
@@ -76,17 +94,17 @@ export default function TasksWindowView(){
                         view:"combo", 
                         id:"formWindowTaskPerformer", 
                         label:"Исполнитель", 
-                        name: "taskPerformer",
+                        name: "performer",
                         width: 400,
                         labelWidth: 100,
                         align : 'center',
-                        options:[" ","One", "Two", "Three"]
+                        options: employees
                     },
                     {
                         view:"select", 
                         id:"formWindowTaskStage", 
                         label: "Статус",
-                        name: "taskStatus",
+                        name: "status",
                         labelWidth: 100,
                         width: 400,
                         value: TASK_STAGE_TYPE.new,  
@@ -97,7 +115,7 @@ export default function TasksWindowView(){
                         view:"segmented", 
                         id:"formWindowTaskUrgently", 
                         width: 400,
-                        name: "taskUrgently",
+                        name: "urgently",
                         value:1, 
                         align : 'center',
                         options:[
@@ -121,7 +139,7 @@ export default function TasksWindowView(){
                                 {
                                     view: "timeboard",
                                     id: "formWindowTaskPlanTime",
-                                    name: "taskPlanTime",
+                                    name: "plan_time",
                                     twelve: false,
                                     width: 400
                                  },
@@ -139,7 +157,7 @@ export default function TasksWindowView(){
                                 {
                                     view: "timeboard",
                                     id: "formWindowTaskFactTime",
-                                    name: "taskFactTime",
+                                    name: "fact_time",
                                     twelve: false,
                                     width: 400
                                  },

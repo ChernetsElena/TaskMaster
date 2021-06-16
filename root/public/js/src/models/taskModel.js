@@ -10,14 +10,14 @@ class TaskModel extends Model {
     createTask(dataWindow) {
         dataTasks.push(new Task(
             Number(dataTasks[dataTasks.length-1].id) + 1,
-            1, 
-            dataWindow.taskStatus,
-            dataWindow.taskName, 
-            dataWindow.taskDescription, 
-            dataWindow.taskPerformer, 
-            dataWindow.taskUrgently, 
-            taskPlanTime,
-            taskFactTime)
+            dataWindow.projectID,
+            dataWindow.status,
+            dataWindow.name, 
+            dataWindow.description, 
+            dataWindow.performer, 
+            dataWindow.urgently, 
+            dataWindow.plan_time,
+            dataWindow.fact_time,)
         )
         console.log(dataTasks)
     }
@@ -30,6 +30,20 @@ class TaskModel extends Model {
             }
         })
         return tasksOfProject
+    }
+
+    updateTask(dataWindow) {
+        let updateTask = dataTasks.find(item => item.id == dataWindow.id)
+        let indexOfUpdateTask = dataTasks.indexOf(updateTask)
+        dataTasks.splice(indexOfUpdateTask, 1, dataWindow)
+        console.log(dataTasks)
+    }
+
+    deleteTask(dataWindow) {
+        let deleteTask = dataTasks.find(item => item.id == dataWindow.id)
+        let indexOfDeleteTask = dataTasks.indexOf(deleteTask)
+        dataTasks.splice(indexOfDeleteTask, 1)
+        console.log(dataTasks)
     }
 }
 

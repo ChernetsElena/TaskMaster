@@ -17,12 +17,12 @@ export class Project {
         this.clickTimeout
     }
 
-    init (projectsButton, tasks, showTasksViewCB) {
+    init (projectsButton, tasks, tasksButton, showProjectsViewCB, showTasksViewCB) {
         this.showTasksView = showTasksViewCB
         this.projectsButton = projectsButton
         this.tasks = tasks
 
-        this.tasks.init()
+        this.tasks.init(tasksButton, showProjectsViewCB)
 
         this.projectsButton.init(this.window)
 
@@ -80,7 +80,7 @@ export class Project {
                 this.clickTimeout = setTimeout(() => {
                     this.clickTimeout = null
                     this.tasksOfProject = taskModel.getTasks(id)
-                    this.tasks.refreshView(this.tasksOfProject)
+                    this.tasks.refreshView(this.tasksOfProject, id)
                     this.showTasksView()
                 }, 500)
             }

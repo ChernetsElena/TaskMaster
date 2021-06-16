@@ -14,7 +14,7 @@ export class Employees {
         this.FormatDate = FormatDate
         // this.BirthToDate = BirthToDate
     }
-
+    
     init (employeesButton, showProjectsViewCB) {
         this.employeesButton = employeesButton
         this.employeesButton.init(this.window, showProjectsViewCB)
