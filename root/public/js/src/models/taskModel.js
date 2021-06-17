@@ -19,7 +19,6 @@ class TaskModel extends Model {
             dataWindow.plan_time,
             dataWindow.fact_time,)
         )
-        console.log(dataTasks)
     }
 
     getTasks(projectId) {
@@ -43,7 +42,6 @@ class TaskModel extends Model {
         let deleteTask = dataTasks.find(item => item.id == dataWindow.id)
         let indexOfDeleteTask = dataTasks.indexOf(deleteTask)
         dataTasks.splice(indexOfDeleteTask, 1)
-        console.log(dataTasks)
     }
 }
 

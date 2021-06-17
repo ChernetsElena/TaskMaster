@@ -1,6 +1,6 @@
 import TaskWindowView from './TasksWindowView.js';
 import taskModel from '../../../models/taskModel.js';
-
+import {TASK_STATUS} from '../../../data/dataTasks.js'
 
 export class TaskWindow {
     constructor(){
@@ -8,6 +8,8 @@ export class TaskWindow {
         this.type
         this.onChange
         this.projectId
+        this.names
+        this.task_status = TASK_STATUS
     }
 
     init(onChange) {
@@ -104,7 +106,7 @@ export class TaskWindow {
 
         this.view.deleteBtn.attachEvent("onItemClick", () => {
             this.view.window.hide()
-            this.show(TASK_WINDOW_TYPE.delete)
+            this.show(TASK_WINDOW_TYPE.delete,this.names)
         })
     }
 
@@ -119,7 +121,8 @@ export class TaskWindow {
         }
     }
 
-    show(type) {
+    show(type, employees) {
+        this.names = employees
         switch (type) {
             case TASK_WINDOW_TYPE.create:
                 this.view.windowLabel.define("template", "Создание задачи")
@@ -131,9 +134,12 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", false)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.enable()
+                this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
+                this.view.formfields.status.define("options", [this.task_status[0], this.task_status[1]])
                 this.view.formfields.status.disable()
                 this.view.formfields.status.refresh()
+                
                 this.view.formfields.urgently.enable()
                 this.view.formfields.urgently.refresh()
                 this.view.formfields.planTimeLabel.hide()
@@ -154,6 +160,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.enable()
+                this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.disable()
                 this.view.formfields.status.refresh()
@@ -177,8 +184,10 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
+                this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.enable()
+                this.view.formfields.status.define("options", [this.task_status[1], this.task_status[2], this.task_status[4]])
                 this.view.formfields.status.refresh()
                 this.view.formfields.urgently.disable()
                 this.view.formfields.urgently.refresh()
@@ -202,8 +211,10 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
+                this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.enable()
+                this.view.formfields.status.define("options", [this.task_status[2], this.task_status[3], this.task_status[4], this.task_status[5]])
                 this.view.formfields.status.refresh()
                 this.view.formfields.urgently.disable()
                 this.view.formfields.urgently.refresh()
@@ -212,7 +223,7 @@ export class TaskWindow {
                 this.view.formfields.planTime.disable()
                 this.view.formfields.factTimeLabel.show()
                 this.view.formfields.factTime.show()
-                this.view.formfields.factTime.disable()
+                this.view.formfields.factTime.enable()
                 this.view.windowConfirmBtn.show()
                 this.view.windowConfirmBtn.define("value", "Сохранить")
                 this.view.windowConfirmBtn.refresh()
@@ -227,8 +238,10 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
+                this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.enable()
+                this.view.formfields.status.define("options", [this.task_status[2], this.task_status[3], this.task_status[4], this.task_status[5]])
                 this.view.formfields.status.refresh()
                 this.view.formfields.urgently.disable()
                 this.view.formfields.urgently.refresh()
@@ -252,8 +265,10 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", false)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.enable()
+                this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.disable()
+                this.view.formfields.status.define("options", [this.task_status[0], this.task_status[1], this.task_status[4]])
                 this.view.formfields.status.refresh()
                 this.view.formfields.urgently.enable()
                 this.view.formfields.urgently.refresh()
@@ -275,6 +290,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
+                this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.disable()
                 this.view.formfields.status.refresh()
@@ -299,6 +315,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
+                this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.disable()
                 this.view.formfields.status.refresh()

@@ -10,6 +10,8 @@ export class Tasks {
         this.tasksButton
         this.names
         this.projectId
+        this.color_one
+        this.color_two
     }
 
     init(tasksButton, showProjectsViewCB){
@@ -25,8 +27,9 @@ export class Tasks {
         })
 
         this.names = []
+
         employeeModel.getEmployees().map((employee) => {
-            this.names.push(`${employee.last_name} ${employee.name}`)
+            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
         })
     }
 
@@ -37,6 +40,7 @@ export class Tasks {
 
     attachEvents(){
         this.view = {
+            container: $$('tasksContainer'),
             filterList: $$('filterList'),
             newList: $$('tasksNewList'),
             assignedList: $$('tasksAssignedList'),
@@ -103,12 +107,17 @@ export class Tasks {
     }
 
     showWindow(type) {
-        console.log(type)
-        this.window.show(type)
+        this.names = []
+        employeeModel.getEmployees().map((employee) => {
+            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        })
+        this.window.show(type, this.names)
     }
 
-    refreshView(tasksData, projectId) {
+    refreshView(tasksData, projectId, color_one, color_two) {
         this.projectId = projectId
+        this.color_one = color_one
+        this.color_two = color_two
         this.window.setId(projectId)
 
         let newTasks = []
@@ -148,5 +157,6 @@ export class Tasks {
         this.view.coordinationList.parse(coordinationTasks)
         this.view.doneList.clearAll()
         this.view.doneList.parse(doneTasks)
+        this.view.container.define("css",{"background": `linear-gradient(-45deg, ${color_one}, ${color_two})`})
     }
 }

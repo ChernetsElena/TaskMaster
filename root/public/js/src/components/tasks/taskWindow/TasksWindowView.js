@@ -1,23 +1,8 @@
-export const TASK_STAGE_TYPE = {
-    new: 'Новая',
-    assigned: 'Назначена',
-    inJob: 'В работе',
-    pause: 'Пауза',
-    coordination: 'Согласование',
-    done: 'Решена' 
-}
+import {TASK_STATUS} from '../../../data/dataTasks.js'
+import {TASK_URGENTLY} from '../../../data/dataTasks.js'
 
 export default function TasksWindowView(employees){
     let headText = 'Новая задача' 
-
-    let TASK_STAGE = [
-        {"id": 0, "value": TASK_STAGE_TYPE.new},
-        {"id": 1, "value": TASK_STAGE_TYPE.assigned},
-        {"id": 2, "value": TASK_STAGE_TYPE.inJob},
-        {"id": 3, "value": TASK_STAGE_TYPE.pause},
-        {"id": 4, "value": TASK_STAGE_TYPE.coordination},
-        {"id": 5, "value": TASK_STAGE_TYPE.done},
-    ]
 
     return {
         view:"window",
@@ -107,9 +92,9 @@ export default function TasksWindowView(employees){
                         name: "status",
                         labelWidth: 100,
                         width: 400,
-                        value: TASK_STAGE_TYPE.new,  
+                        value: TASK_STATUS[0],  
                         align : 'center',
-                        options: TASK_STAGE
+                        options: TASK_STATUS
                     },
                     {
                         view:"segmented", 
@@ -118,11 +103,7 @@ export default function TasksWindowView(employees){
                         name: "urgently",
                         value:1, 
                         align : 'center',
-                        options:[
-                            { "id":"0", "value":"Нормально" },
-                            { "id":"1", "value":"Срочно" }, 
-                            { "id":"2", "value":"Очень срочно" }
-                        ],
+                        options: TASK_URGENTLY,
                         css: "segment_btn_task_window",
                         
                     },

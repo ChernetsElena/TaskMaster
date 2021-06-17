@@ -11,7 +11,7 @@ func main() {
 	var host, port, dir *string
 
 	host = flag.String("host", "", `HTTP server's host. Default: "localhost"`)
-	port = flag.String("port", "8080", `HTTP server's port. Default: "8080"`)
+	port = flag.String("port", "8090", `HTTP server's port. Default: "8090"`)
 	dir = flag.String("dir", "./root", `HTTP server's dir. Default: "./root"`)
 
 	flag.Parse()

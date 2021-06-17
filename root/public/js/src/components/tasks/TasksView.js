@@ -1,5 +1,10 @@
+import {TASK_STATUS} from '../../data/dataTasks.js'
+import {TASK_URGENTLY_COLOR} from '../../data/dataTasks.js'
+
 export default function TasksView(){
+    
     return {
+        id: "tasksContainer",
         css: {"background": "linear-gradient(-45deg, #ffdb5c, #ffacac)"},
         rows: [
                 {
@@ -26,11 +31,18 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 140,
+                        height: 180,
                         width: 230
                     },
                     drag: false,
-                    template:"<div class='overall_tasks'><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    template: function (obj) {
+                        return "<div class='overall_tasks' style = 'border: 8px solid " + TASK_URGENTLY_COLOR[obj.urgently].value +"'>" + 
+                        "<div class ='title_tasks'>" + obj.name + "</div>" + 
+                        "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
+                        "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
+                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</div>"            
+                    },
                     data:[]
                 },
             ]},
@@ -47,11 +59,18 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 140,
+                        height: 180,
                         width: 230
                     },
                     drag: false,
-                    template:"<div class='overall_tasks'><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    template: function (obj) {
+                        return "<div class='overall_tasks' style = 'border: 8px solid " + TASK_URGENTLY_COLOR[obj.urgently].value +"'>" + 
+                        "<div class ='title_tasks'>" + obj.name + "</div>" + 
+                        "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
+                        "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
+                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</div>"            
+                    },                                
                     data: []
                 },
             ]},
@@ -69,11 +88,18 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 140,
+                        height: 180,
                         width: 230
                     },
                     drag: false,
-                    template:"<div class='overall_tasks'><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    template: function (obj) {
+                        return "<div class='overall_tasks' style = 'border: 8px solid " + TASK_URGENTLY_COLOR[obj.urgently].value +"'>" + 
+                        "<div class ='title_tasks'>" + obj.name + "</div>" + 
+                        "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
+                        "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
+                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</div>"            
+                    },                
                     data: []
                 },
             ]},
@@ -91,11 +117,18 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 140,
+                        height: 180,
                         width: 230
                     },
                     drag: false,
-                    template:"<div class='overall_tasks' style='background: #v#' ><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    template: function (obj) {
+                        return "<div class='overall_tasks' style = 'border: 8px solid " + TASK_URGENTLY_COLOR[obj.urgently].value +"'>" + 
+                        "<div class ='title_tasks'>" + obj.name + "</div>" + 
+                        "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
+                        "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
+                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</div>"            
+                    },                                
                     data: []
                 },
             ]},
@@ -113,12 +146,19 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 140,
+                        height: 180,
                         width: 230
                     },
                     drag: false,
                     dragscroll:true,
-                    template:"<div class='overall_tasks'><div class ='title_tasks'>#name#</div></br><div class='status_tasks'>Статус: #status#</div> </br> <div class='performer_tasks'>Исполнитель: #performer#</div></div>",
+                    template: function (obj) {
+                        return "<div class='overall_tasks' style = 'border: 8px solid " + TASK_URGENTLY_COLOR[obj.urgently].value +"'>" + 
+                        "<div class ='title_tasks'>" + obj.name + "</div>" + 
+                        "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
+                        "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
+                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</div>"            
+                    },                 
                     data: []
                 },
             ]},

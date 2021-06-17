@@ -15,15 +15,15 @@ export default function EmployeesWindowView(positions){
                 template: headText,
                 borderless: true,
                 type:"header",
-                width: 320,
+                width: 300,
             },
-            {},
+            {width: 130},
             {
                 view: "button",
                 id: "employeeWindowCloseButton",
                 type: "icon",
                 icon: "wxi-close",
-                width: 50,
+                width: 40,
             }
         ]},
         body:{

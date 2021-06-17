@@ -1,12 +1,13 @@
 import TaskButtonView from './TasksButtonView.js';
 import { TASK_WINDOW_TYPE } from '../taskWindow/CTasksWindow.js'
-
+import employeeModel from '../../../models/employeeModel.js'
 
 export class TaskButton {
     constructor(){
         this.view
         this.window
         this.showProjectsView
+        this.names
     }
 
     init( projectWindow, showProjectsViewCB ) {
@@ -34,6 +35,10 @@ export class TaskButton {
     }
 
     showWindow() {
-        this.window.show(TASK_WINDOW_TYPE.create)
+        this.names = []
+        employeeModel.getEmployees().map((employee) => {
+            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        })
+        this.window.show(TASK_WINDOW_TYPE.create, this.names)
     }
 } 

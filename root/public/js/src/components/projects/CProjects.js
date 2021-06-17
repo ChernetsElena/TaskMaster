@@ -30,18 +30,12 @@ export class Project {
             () => { this.refreshView(this.projects) }
         )
         this.names = []
-        employeeModel.getEmployees().map((employee) => {
-            this.names.push(`${employee.last_name} ${employee.name}`)
-        })
 
         this.projects = []
 
         this.tasksOfProject = []
 
         this.clickTimeout = null
-        // employeeModel.getEmployees().map((employee) => {
-        //     this.names.push({id: employee.id, value: `${employee.last_name} ${employee.name}` })
-        // })    
     }
 
     config() {
@@ -80,7 +74,8 @@ export class Project {
                 this.clickTimeout = setTimeout(() => {
                     this.clickTimeout = null
                     this.tasksOfProject = taskModel.getTasks(id)
-                    this.tasks.refreshView(this.tasksOfProject, id)
+                    let project = this.view.projectsDv.getItem(id)
+                    this.tasks.refreshView(this.tasksOfProject, id, project.color_one, project.color_two)
                     this.showTasksView()
                 }, 500)
             }
@@ -88,7 +83,11 @@ export class Project {
     }
 
     showWindow(type) {
-        this.window.show(type)
+        this.names = []
+        employeeModel.getEmployees().map((employee) => {
+            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        })
+        this.window.show(type, this.names)
     }
 
     refreshView(data) {

@@ -1,10 +1,12 @@
 import ProjectsButtonView from './ProjectsButtonView.js';
 import {PROJECT_WINDOW_TYPE } from '../projectWindow/CProjectsWindow.js';
+import employeeModel from '../../../models/employeeModel.js'
 
 export class ProjectsButton {
     constructor(){
         this.view
         this.window
+        this.names
     }
 
     init(projectWindow) {
@@ -26,6 +28,10 @@ export class ProjectsButton {
     }
 
     showWindow() {
-        this.window.show(PROJECT_WINDOW_TYPE.new)
+        this.names = []
+        employeeModel.getEmployees().map((employee) => {
+            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        })
+        this.window.show(PROJECT_WINDOW_TYPE.new, this.names)
     }
 }

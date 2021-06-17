@@ -10,12 +10,12 @@ export default function ProjectsWindowView(employees){
                 {
                     view: 'template',
                     id: 'projectWindowLabel',
-                    css: 'webix_template',
                     template: headText,
                     borderless: true,
                     type:"header",
-                    width: 320,
+                    //width: 300,
                 },
+                {},
                 {
                     view: "button",
                     id: "projectWindowDeleteButton",

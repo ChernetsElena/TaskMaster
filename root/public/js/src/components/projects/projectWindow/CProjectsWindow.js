@@ -7,6 +7,7 @@ export class ProjectsWindow {
         this.view
         this.type
         this.onChange
+        this.names
     }
 
     init(onChange) {
@@ -72,12 +73,12 @@ export class ProjectsWindow {
 
         this.view.updateBtn.attachEvent("onItemClick", () => {
             this.view.window.hide()
-            this.show(PROJECT_WINDOW_TYPE.update)
+            this.show(PROJECT_WINDOW_TYPE.update, this.names)
         })
 
         this.view.deleteBtn.attachEvent("onItemClick", () => {
             this.view.window.hide()
-            this.show(PROJECT_WINDOW_TYPE.delete)
+            this.show(PROJECT_WINDOW_TYPE.delete, this.names)
         })
     }
 
@@ -92,7 +93,8 @@ export class ProjectsWindow {
         }
     }
 
-    show(type) {
+    show(type, employees) {
+        this.names = employees
         switch (type) {
             case PROJECT_WINDOW_TYPE.new:
                 this.view.windowLabel.define("template", "Новый проект")
@@ -104,11 +106,15 @@ export class ProjectsWindow {
                 this.view.formfields.colorOne.enable()
                 this.view.formfields.colorTwo.enable()
                 this.view.formfields.teamlead.enable()
+                this.view.formfields.teamlead.define("options", employees)
+                this.view.formfields.teamlead.refresh()
                 this.view.windowConfirmBtn.show()
                 this.view.windowConfirmBtn.define("value", "Создать")
                 this.view.windowConfirmBtn.refresh()
                 this.view.updateBtn.hide()
+                this.view.updateBtn.refresh()
                 this.view.deleteBtn.hide()
+                this.view.deleteBtn.refresh()
                 this.view.window.resize()
                 break;
 
@@ -122,10 +128,14 @@ export class ProjectsWindow {
                 this.view.formfields.colorOne.enable()
                 this.view.formfields.colorTwo.enable()
                 this.view.formfields.teamlead.enable()
+                this.view.formfields.teamlead.define("options", employees)
+                this.view.formfields.teamlead.refresh()
                 this.view.windowConfirmBtn.define("value", "Сохранить")
                 this.view.windowConfirmBtn.refresh()
-                this.view.updateBtn.hide()
-                this.view.deleteBtn.hide()
+                this.view.updateBtn.show()
+                this.view.updateBtn.refresh()
+                this.view.deleteBtn.show()
+                this.view.deleteBtn.refresh()
                 this.view.windowConfirmBtn.show()
                 this.view.window.resize()
                 break;
@@ -140,8 +150,12 @@ export class ProjectsWindow {
                 this.view.formfields.colorOne.disable()
                 this.view.formfields.colorTwo.disable()
                 this.view.formfields.teamlead.disable()
+                this.view.formfields.teamlead.define("options", employees)
+                this.view.formfields.teamlead.refresh()
                 this.view.updateBtn.show()
+                this.view.updateBtn.refresh()
                 this.view.deleteBtn.show()
+                this.view.deleteBtn.refresh()
                 this.view.windowConfirmBtn.hide()
                 this.view.window.resize()
                 break;
@@ -156,10 +170,14 @@ export class ProjectsWindow {
                 this.view.formfields.colorOne.disable()
                 this.view.formfields.colorTwo.disable()
                 this.view.formfields.teamlead.disable()
+                this.view.formfields.teamlead.define("options", employees)
+                this.view.formfields.teamlead.refresh()
                 this.view.windowConfirmBtn.define("value", "Удалить")
                 this.view.windowConfirmBtn.refresh()
                 this.view.updateBtn.show()
+                this.view.updateBtn.refresh()
                 this.view.deleteBtn.show()
+                this.view.deleteBtn.refresh()
                 this.view.windowConfirmBtn.show()
                 this.view.window.resize()
                 break;
