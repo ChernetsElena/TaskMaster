@@ -8,33 +8,19 @@ class ProjectModel extends Model{
     }
 
     createProject(dataWindow) {
-        dataProjects.push(new Project(
-            Number(dataProjects[dataProjects.length-1].id) + 1,
-            dataWindow.name, 
-            dataWindow.description, 
-            dataWindow.teamlead, 
-            dataWindow.color_one, 
-            dataWindow.color_two)
-        )
-        //console.log(this.post('NEW_PROJECT', dataWindow))
+       return this.post('/project/create', dataWindow)
     }
 
     updateProject(dataWindow) {
-        let updateProject = dataProjects.find(item => item.id == dataWindow.id)
-        let indexOfUpdateProject = dataProjects.indexOf(updateProject)
-        dataProjects.splice(indexOfUpdateProject, 1, dataWindow)
-        //console.log(dataProjects)
+        return this.post('/project/update', dataWindow)
     }
 
     deleteProject(dataWindow) {
-        let deleteProject = dataProjects.find(item => item.id == dataWindow.id)
-        let indexOfDeleteProject = dataProjects.indexOf(deleteProject)
-        dataProjects.splice(indexOfDeleteProject, 1)
-        console.log(dataProjects)
+        return this.post('/project/delete', dataWindow)
     }
 
     getProjects() {
-        return dataProjects
+        return this.post('/project/all')
     }
 }
 

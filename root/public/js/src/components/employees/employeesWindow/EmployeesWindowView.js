@@ -1,5 +1,5 @@
 
-export default function EmployeesWindowView(positions){
+export default function EmployeesWindowView(){
     let headText = 'Добавление сотрудника'
 
     return {
@@ -70,7 +70,7 @@ export default function EmployeesWindowView(positions){
                         width: 400,
                         labelWidth: 150,
                         align : 'center',
-                        options: positions,
+                        options: [],
                         attributes: {required: true}
                     },
                     {
@@ -112,6 +112,12 @@ export default function EmployeesWindowView(positions){
             },    
         ],
         css:{"border-color":"orange"},
+        rules:{
+            "last_name":webix.rules.isNotEmpty,
+            "name":webix.rules.isNotEmpty,
+            "email":webix.rules.isEmail,
+            "birth":webix.rules.isNotEmpty,
+        }
     }
     }
 }

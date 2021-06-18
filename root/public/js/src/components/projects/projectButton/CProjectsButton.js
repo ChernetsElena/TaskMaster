@@ -29,9 +29,11 @@ export class ProjectsButton {
 
     showWindow() {
         this.names = []
-        employeeModel.getEmployees().map((employee) => {
-            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
-        })
-        this.window.show(PROJECT_WINDOW_TYPE.new, this.names)
+        employeeModel.getEmployees().then((data) => {
+            data.map((employee) => {
+                this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+            })
+            this.window.show(PROJECT_WINDOW_TYPE.new, this.names)
+        })       
     }
 }

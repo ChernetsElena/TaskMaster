@@ -36,9 +36,11 @@ export class TaskButton {
 
     showWindow() {
         this.names = []
-        employeeModel.getEmployees().map((employee) => {
-            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        employeeModel.getEmployees().then((data) => {
+            data.map((employee) => {
+                this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+            })
+            this.window.show(TASK_WINDOW_TYPE.create, this.names)
         })
-        this.window.show(TASK_WINDOW_TYPE.create, this.names)
     }
 } 

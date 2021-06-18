@@ -13,13 +13,12 @@
     -moz-border-radius: 8px;
     background-image:none;
     background-color:#aebaff;
-    color: rgb(0, 0, 0);
+    color: rgb(32, 32, 32);
 }
 
 .overall_tasks{
     border-radius: 4px;
-    height: 160px
-
+    height: 160px;
 }
   
   .title_tasks{

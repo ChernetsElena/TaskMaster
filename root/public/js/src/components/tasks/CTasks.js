@@ -22,14 +22,17 @@ export class Tasks {
         this.tasksButton.init(this.window, showProjectsViewCB)
 
         this.window.init(() => { 
-            this.tasksData = taskModel.getTasks(this.projectId)
-            this.refreshView(this.tasksData, this.projectId) 
+            taskModel.getTasksByProjectId(this.projectId).then((data) => {
+                this.refreshView(data, this.projectId, this.color_one, this.color_two) 
+            })
         })
 
         this.names = []
 
-        employeeModel.getEmployees().map((employee) => {
-            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        employeeModel.getEmployees().then((data) => {
+            data.map((employee) => {
+                this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+            })
         })
     }
 
@@ -108,17 +111,21 @@ export class Tasks {
 
     showWindow(type) {
         this.names = []
-        employeeModel.getEmployees().map((employee) => {
-            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        employeeModel.getEmployees().then((data) => {
+            data.map((employee) => {
+                this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+            })
+            this.window.show(type, this.names)
         })
-        this.window.show(type, this.names)
     }
 
     refreshView(tasksData, projectId, color_one, color_two) {
         this.projectId = projectId
         this.color_one = color_one
         this.color_two = color_two
-        this.window.setId(projectId)
+       
+        
+
 
         let newTasks = []
         let assignedTasks = []
@@ -147,6 +154,7 @@ export class Tasks {
             }
         })
 
+        this.window.setId(projectId)
         this.view.newList.clearAll()
         this.view.newList.parse(newTasks)
         this.view.assignedList.clearAll()
@@ -157,6 +165,10 @@ export class Tasks {
         this.view.coordinationList.parse(coordinationTasks)
         this.view.doneList.clearAll()
         this.view.doneList.parse(doneTasks)
-        this.view.container.define("css",{"background": `linear-gradient(-45deg, ${color_one}, ${color_two})`})
+        this.view.container.define("css", {"background": `linear-gradient(-45deg, ${this.color_one}, ${this.color_two})`})
+        this.view.container.resize()
+        console.log('in refresh task', this.color_one, this.color_two)
+        
+        //console.log(this.view.container["$ready"])
     }
 }

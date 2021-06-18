@@ -45,29 +45,45 @@ export class ProjectsWindow {
             switch (this.type) {
                 case PROJECT_WINDOW_TYPE.new:
                     if (this.view.form.validate()) {
-                        projectModel.createProject(this.fetch())
-                        this.onChange()
-                        this.clearForm();
-                        this.hide()
-                        break; 
+                        projectModel.createProject(this.fetch()).then(() => {
+                            this.onChange()
+                            this.clearForm();
+                            this.hide()
+                        })
+                        break;
                     }
                     else {
+                        webix.message("Ваша форма не валидна")
                         break;
                     }
                     
                 case PROJECT_WINDOW_TYPE.update:
-                    projectModel.updateProject(this.fetch())
-                    this.onChange()
-                    this.clearForm();
-                    this.hide()
-                    break;
+                    if (this.view.form.validate()) {
+                        projectModel.updateProject(this.fetch()).then(() => {
+                            this.onChange()
+                            this.clearForm();
+                            this.hide()
+                        })
+                        break;
+                    }
+                    else {
+                        webix.message("Ваша форма не валидна")
+                        break;
+                    }
                     
                 case PROJECT_WINDOW_TYPE.delete:
-                    projectModel.deleteProject(this.fetch())
-                    this.onChange()
-                    this.clearForm();
-                    this.hide()
-                    break;
+                    if (this.view.form.validate()) {
+                        projectModel.deleteProject(this.fetch()).then(() => {
+                            this.onChange()
+                            this.clearForm();
+                            this.hide()
+                        })
+                        break;
+                    }
+                    else {
+                        webix.message("Ваша форма не валидна")
+                        break;
+                    }
             }
         })
 

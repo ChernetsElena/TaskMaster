@@ -1,20 +1,27 @@
 import EmployeesWindowView from './EmployeesWindowView.js'
 import employeeModel from '../../../models/employeeModel.js'
-
+import positionModel from '../../../models/positionModel.js'
 
 export class EmployeesWindow {
     constructor(){
         this.view
         this.type
-        this.onChange
+        this.onChang
+        this.positions
     }
 
     init(onChange) {
         this.onChange = onChange
+
+        this.positions = []
+
+        positionModel.getPositions().then((data) => {
+            this.positions = data
+        })
     }
 
-    config(positions) {
-        return EmployeesWindowView(positions)
+    config() {
+        return EmployeesWindowView()
     }
 
     attachEvents() {
@@ -42,24 +49,46 @@ export class EmployeesWindow {
         this.view.windowConfirmBtn.attachEvent("onItemClick", () => {
             switch (this.type) {
                 case EMPLOYEE_WINDOW_TYPE.new:
-                    employeeModel.createEmployee(this.fetch())
-                    this.onChange()
-                    this.clearForm();
-                    this.hide()
-                    break; 
+                    if (this.view.form.validate()) {
+                        employeeModel.createEmployee(this.fetch()).then(() => {
+                            this.onChange()
+                            this.clearForm();
+                            this.hide()
+                        })
+                        break;
+                    }
+                    else {
+                        webix.message("Ваша форма не валидна")
+                        break;
+                    }
                     
                 case EMPLOYEE_WINDOW_TYPE.update:
-                    employeeModel.updateEmployee(this.fetch())
-                    this.onChange()
-                    this.clearForm();
-                    this.hide()
-                    break;
+                    if (this.view.form.validate()) {
+                        employeeModel.updateEmployee(this.fetch()).then(() => {
+                            this.onChange()
+                            this.clearForm();
+                            this.hide()
+                        })
+                        break;
+                    }
+                    else {
+                        webix.message("Ваша форма не валидна")
+                        break;
+                    }
+                    
                 case EMPLOYEE_WINDOW_TYPE.delete:
-                    employeeModel.deleteEmployee(this.fetch())
-                    this.onChange()
-                    this.clearForm();
-                    this.hide()
-                    break;
+                    if (this.view.form.validate()) {
+                        employeeModel.deleteEmployee(this.fetch()).then(() => {
+                            this.onChange()
+                            this.clearForm();
+                            this.hide()
+                        })
+                        break;
+                    }
+                    else {
+                        webix.message("Ваша форма не валидна")
+                        break;
+                    }
             }
         })
     }
@@ -87,6 +116,7 @@ export class EmployeesWindow {
                 this.view.formfields.middleName.define("readonly", false)
                 this.view.formfields.middleName.refresh()
                 this.view.formfields.position.enable()
+                this.view.formfields.position.define("options", this.positions)
                 this.view.formfields.position.refresh()
                 this.view.formfields.email.define("readonly", false)
                 this.view.formfields.email.refresh()
@@ -105,6 +135,7 @@ export class EmployeesWindow {
                 this.view.formfields.middleName.define("readonly", false)
                 this.view.formfields.middleName.refresh()
                 this.view.formfields.position.enable()
+                this.view.formfields.position.define("options", this.positions)
                 this.view.formfields.position.refresh()
                 this.view.formfields.email.define("readonly", false)
                 this.view.formfields.email.refresh()
@@ -123,6 +154,7 @@ export class EmployeesWindow {
                 this.view.formfields.middleName.define("readonly", true)
                 this.view.formfields.middleName.refresh()
                 this.view.formfields.position.disable()
+                this.view.formfields.position.define("options", this.positions)
                 this.view.formfields.position.refresh()
                 this.view.formfields.email.define("readonly", true)
                 this.view.formfields.email.refresh()

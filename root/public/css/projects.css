@@ -21,6 +21,10 @@
     color: black;
     background: linear-gradient(-45deg, #ffdb5c, #ffacac);
     box-shadow: 0px 1px 1px #d4d7de;
+    -moz-user-select: none;
+    -khtml-user-select: none;     
+    -webkit-user-select: none;
+    user-select: none;
 }
   
   .title{
@@ -32,7 +36,12 @@
     padding-left: 5px;
     margin-top: 10px;
     width: 200px;
+    -moz-user-select: none;
+    -khtml-user-select: none;     
+    -webkit-user-select: none;
+    user-select: none;
   }
+
   .title_long{
     height:40px;
     line-height:20px;
@@ -41,6 +50,10 @@
     float: left;
     padding-left: 5px;
     width: 200px;
+    -moz-user-select: none;
+    -khtml-user-select: none;     
+    -webkit-user-select: none;
+    user-select: none;
   }
   .description{
     height:150px;
@@ -51,6 +64,10 @@
     padding-left: 5px;
     width: 200px;
     word-wrap: break-word;
+    -moz-user-select: none;
+    -khtml-user-select: none;     
+    -webkit-user-select: none;
+    user-select: none;
   }
   .teamlead{
     margin-top: 50px;
@@ -61,4 +78,8 @@
     float: left;
     padding-left: 5px;
     width: 200px;
+    -moz-user-select: none;
+    -khtml-user-select: none;     
+    -webkit-user-select: none;
+    user-select: none;
   }

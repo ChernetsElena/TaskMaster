@@ -27,13 +27,11 @@ export class Project {
         this.projectsButton.init(this.window)
 
         this.window.init(
-            () => { this.refreshView(this.projects) }
+            () => { this.refreshView() }
         )
         this.names = []
 
         this.projects = []
-
-        this.tasksOfProject = []
 
         this.clickTimeout = null
     }
@@ -51,10 +49,8 @@ export class Project {
 
         this.window.attachEvents()
 
-        this.projects = projectModel.getProjects()
-
-        this.refreshView(this.projects)
-
+        this.refreshView()
+        
         this.view.search.attachEvent("onTimedKeyPress",() => { 
             var value = this.view.search.getValue().toLowerCase(); 
             this.view.projectsDv.filter(function(obj){
@@ -62,36 +58,44 @@ export class Project {
             })
         });
 
+
         this.view.projectsDv.attachEvent("onItemClick", (id) => {
+            let selectedProject = this.view.projectsDv.getItem(id)
             if (this.clickTimeout) {
                 clearTimeout(this.clickTimeout)
                 this.clickTimeout = null
-                let selectedProject = this.view.projectsDv.getItem(id)
                 this.window.parse(selectedProject)
                 this.showWindow(PROJECT_WINDOW_TYPE.show);
                
             } else {
                 this.clickTimeout = setTimeout(() => {
+                    let selectedProject = this.view.projectsDv.getItem(id)
                     this.clickTimeout = null
-                    this.tasksOfProject = taskModel.getTasks(id)
-                    let project = this.view.projectsDv.getItem(id)
-                    this.tasks.refreshView(this.tasksOfProject, id, project.color_one, project.color_two)
+                    taskModel.getTasksByProjectId(id).then((data) => {
+                        this.tasks.refreshView(data, id, selectedProject.color_one, selectedProject.color_two)
+                        console.log('in cproject', data, id, selectedProject.color_one, selectedProject.color_two)
+                    })
                     this.showTasksView()
                 }, 500)
+                
             }
         })
     }
 
     showWindow(type) {
         this.names = []
-        employeeModel.getEmployees().map((employee) => {
-            this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        employeeModel.getEmployees().then((data) => {
+            data.map((employee) => {
+                this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+            })
+            this.window.show(type, this.names)
         })
-        this.window.show(type, this.names)
     }
 
-    refreshView(data) {
-        this.view.projectsDv.clearAll()
-        this.view.projectsDv.parse(data)
+    refreshView() {
+        projectModel.getProjects().then((data) => {
+            this.view.projectsDv.clearAll()
+            this.view.projectsDv.parse(data)
+        })
     }
 }

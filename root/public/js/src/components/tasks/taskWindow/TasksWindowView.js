@@ -163,6 +163,12 @@ export default function TasksWindowView(employees){
             },    
         ],
         css:{"border-color":"orange"},
+        rules:{
+            "name":webix.rules.isNotEmpty,
+            "performer":webix.rules.isNotEmpty,
+            "fact_time":webix.rules.isNotEmpty,
+            "plan_time":webix.rules.isNotEmpty,
+        }
     }
     }
 }
