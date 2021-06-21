@@ -97,6 +97,7 @@ export default class Model {
                 case URL_TYPE.createEmployee:
                     dataEmployees.push(new Employee(
                         Number(dataEmployees[dataEmployees.length-1].id) + 1, 
+                        params.positionID,
                         params.position, 
                         params.name, 
                         params.last_name, 

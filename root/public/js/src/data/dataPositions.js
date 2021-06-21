@@ -1,4 +1,5 @@
 export const dataPositions = [
+    {"id": 0, "value": "Position0"},
     {"id": 1, "value": "Position1"},
     {"id": 2, "value": "Position2"},
     {"id": 3, "value": "Position3"},

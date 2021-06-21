@@ -86,7 +86,7 @@ export class Tasks {
             this.showWindow(TASK_WINDOW_TYPE.assigned)
             this.view.assignedList.unselectAll();
         })
-
+        
         this.view.inJobList.attachEvent("onSelectChange", (id) => {
             let selectedTask = this.view.inJobList.getItem(id)
             this.window.parse(selectedTask)

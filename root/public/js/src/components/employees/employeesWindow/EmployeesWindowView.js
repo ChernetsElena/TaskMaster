@@ -63,6 +63,16 @@ export default function EmployeesWindowView(){
                         attributes: {required: true}
                     },
                     {
+                        view:"text", 
+                        label:"ID Должности",
+                        name: "positionID",
+                        id:"employeePositionId", 
+                        width: 400,
+                        labelWidth: 150,
+                        align : 'center',
+                        attributes: {required: true}
+                    },
+                    {
                         view:"select", 
                         label:"Должность",
                         name: "position",
@@ -85,7 +95,6 @@ export default function EmployeesWindowView(){
                     },
                     {
                         view:"datepicker", 
-                        
                         label:"Дата рождения",
                         name: "birth",
                         id:"employeeBirth", 

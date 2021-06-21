@@ -35,6 +35,7 @@ export class EmployeesWindow {
                 lastName: $$('employeeLastName'),
                 name: $$('employeeFirstName'),
                 middleName: $$('employeeMiddleName'),
+                positionID: $$('employeePositionId'),
                 position: $$('employeePosition'),
                 email: $$('employeeEmail'),
                 birth: $$('employeeBirth'),         

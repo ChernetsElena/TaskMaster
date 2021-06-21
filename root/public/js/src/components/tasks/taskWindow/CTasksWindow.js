@@ -49,13 +49,14 @@ export class TaskWindow {
         })
 
         this.view.formfields.performer.attachEvent("onChange", () => {
-            if (this.view.formfields.performer.getValue() == " ") {
+            if (this.view.formfields.performer.getValue() == "") {
                 this.view.formfields.status.setValue(0)
             }
             else {
                 this.view.formfields.status.setValue(1)
             }
         })
+
 
         this.view.windowConfirmBtn.attachEvent("onItemClick", () => {
              switch (this.type) {

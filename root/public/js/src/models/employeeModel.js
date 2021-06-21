@@ -1,4 +1,3 @@
-import {dataEmployees} from '../data/dataEmployees.js'
 import Model from '../../../js/helpers/model.js'
 
 class EmployeeModel extends Model{
