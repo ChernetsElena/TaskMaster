@@ -79,11 +79,31 @@ export default function TasksWindowView(employees){
                         view:"combo", 
                         id:"formWindowTaskPerformer", 
                         label:"Исполнитель", 
-                        name: "performer",
+                        name: "performerID",
                         width: 400,
                         labelWidth: 100,
                         align : 'center',
                         options: employees
+                    },
+                    {
+                        view:"text", 
+                        id:"formWindowTaskPerformerName", 
+                        label:"Имя", 
+                        name: "performer_name",
+                        width: 400,
+                        labelWidth: 100,
+                        align : 'center',
+                        hidden: true
+                    },
+                    {
+                        view:"text", 
+                        id:"formWindowTaskPerformerLastName", 
+                        label:"Фамилия", 
+                        name: "performer_last_name",
+                        width: 400,
+                        labelWidth: 100,
+                        align : 'center',
+                        hidden: true
                     },
                     {
                         view:"select", 

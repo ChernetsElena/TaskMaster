@@ -55,15 +55,23 @@ export default class Model {
     // метод для совершения post запроса
     post(url, params) {
         return new Promise(function (resolve, reject) {
+            let performer
+            let teamlead
             switch (url) {
+                
                 case URL_TYPE.createTask:
+                    performer = dataEmployees.find(item => item.id == params.performerID)
+                    params.performer_name = performer.name
+                    params.performer_last_name = performer.last_name
                     dataTasks.push(new Task(
                         Number(dataTasks[dataTasks.length-1].id) + 1,
                         params.projectID,
                         params.status,
                         params.name, 
                         params.description, 
-                        params.performer, 
+                        params.performerID, 
+                        params.performer_name, 
+                        params.performer_last_name, 
                         params.urgently, 
                         params.plan_time,
                         params.fact_time))
@@ -71,6 +79,9 @@ export default class Model {
                     break; 
 
                 case URL_TYPE.updateTask:
+                    performer = dataEmployees.find(item => item.id == params.performerID)
+                    params.performer_name = performer.name
+                    params.performer_last_name = performer.last_name
                     let updateTask = dataTasks.find(item => item.id == params.id)
                     let indexOfUpdateTask = dataTasks.indexOf(updateTask)
                     dataTasks.splice(indexOfUpdateTask, 1, params)
@@ -97,7 +108,6 @@ export default class Model {
                 case URL_TYPE.createEmployee:
                     dataEmployees.push(new Employee(
                         Number(dataEmployees[dataEmployees.length-1].id) + 1, 
-                        params.positionID,
                         params.position, 
                         params.name, 
                         params.last_name, 
@@ -132,11 +142,16 @@ export default class Model {
                     break;
 
                 case URL_TYPE.createProject:
+                    teamlead = dataEmployees.find(item => item.id == params.teamleadID)
+                    params.teamlead_name = teamlead.name
+                    params.teamlead_last_name = teamlead.last_name
                     dataProjects.push(new Project(
                         Number(dataProjects[dataProjects.length-1].id) + 1,
                         params.name, 
                         params.description, 
-                        params.teamlead, 
+                        params.teamleadID, 
+                        params.teamlead_name, 
+                        params.teamlead_last_name, 
                         params.color_one, 
                         params.color_two)
                     )
@@ -144,6 +159,11 @@ export default class Model {
                     break;
 
                 case URL_TYPE.updateProject:
+                    teamlead = dataEmployees.find(item => item.id == params.teamleadID)
+                    console.log(params.teamleadID)
+                    params.teamlead_name = teamlead.name
+                    params.teamlead_last_name = teamlead.last_name
+                    console.log(params.teamlead_name)
                     let updateProject = dataProjects.find(item => item.id == params.id)
                     let indexOfUpdateProject = dataProjects.indexOf(updateProject)
                     dataProjects.splice(indexOfUpdateProject, 1, params)
@@ -191,4 +211,5 @@ export default class Model {
     getEmployeeById: '/employee/id',
 
     getPositions: '/position/all',
+
 }

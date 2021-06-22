@@ -35,12 +35,15 @@ export class TaskButton {
     }
 
     showWindow() {
-        this.names = []
-        employeeModel.getEmployees().then((data) => {
-            data.map((employee) => {
-                this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
-            })
-            this.window.show(TASK_WINDOW_TYPE.create, this.names)
-        })
+        // this.names = []
+        // employeeModel.getEmployees().then((data) => {
+        //     data.map((employee) => {
+        //         this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        //     })
+        //     this.window.show(TASK_WINDOW_TYPE.create, this.names)
+        // })
+
+        this.window.refresh()
+        this.window.show(TASK_WINDOW_TYPE.create)
     }
 } 

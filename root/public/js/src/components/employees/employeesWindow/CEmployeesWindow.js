@@ -2,6 +2,7 @@ import EmployeesWindowView from './EmployeesWindowView.js'
 import employeeModel from '../../../models/employeeModel.js'
 import positionModel from '../../../models/positionModel.js'
 
+
 export class EmployeesWindow {
     constructor(){
         this.view
@@ -14,10 +15,6 @@ export class EmployeesWindow {
         this.onChange = onChange
 
         this.positions = []
-
-        positionModel.getPositions().then((data) => {
-            this.positions = data
-        })
     }
 
     config() {
@@ -35,12 +32,19 @@ export class EmployeesWindow {
                 lastName: $$('employeeLastName'),
                 name: $$('employeeFirstName'),
                 middleName: $$('employeeMiddleName'),
-                positionID: $$('employeePositionId'),
                 position: $$('employeePosition'),
                 email: $$('employeeEmail'),
                 birth: $$('employeeBirth'),         
             }
         }
+
+        positionModel.getPositions().then((data) => {
+            data.map((position) => {
+                this.positions.push({id: `${position.value}`, value: `${position.value}`})
+            })
+            this.view.formfields.position.define('options', this.positions)
+            this.view.formfields.position.refresh()
+        })
 
         this.view.closeBtn.attachEvent("onItemClick", () => {
             this.clearForm()
@@ -117,8 +121,6 @@ export class EmployeesWindow {
                 this.view.formfields.middleName.define("readonly", false)
                 this.view.formfields.middleName.refresh()
                 this.view.formfields.position.enable()
-                this.view.formfields.position.define("options", this.positions)
-                this.view.formfields.position.refresh()
                 this.view.formfields.email.define("readonly", false)
                 this.view.formfields.email.refresh()
                 this.view.formfields.birth.define("readonly", false)
@@ -136,8 +138,6 @@ export class EmployeesWindow {
                 this.view.formfields.middleName.define("readonly", false)
                 this.view.formfields.middleName.refresh()
                 this.view.formfields.position.enable()
-                this.view.formfields.position.define("options", this.positions)
-                this.view.formfields.position.refresh()
                 this.view.formfields.email.define("readonly", false)
                 this.view.formfields.email.refresh()
                 this.view.formfields.birth.define("readonly", false)
@@ -155,8 +155,6 @@ export class EmployeesWindow {
                 this.view.formfields.middleName.define("readonly", true)
                 this.view.formfields.middleName.refresh()
                 this.view.formfields.position.disable()
-                this.view.formfields.position.define("options", this.positions)
-                this.view.formfields.position.refresh()
                 this.view.formfields.email.define("readonly", true)
                 this.view.formfields.email.refresh()
                 this.view.formfields.birth.define("readonly", true)
@@ -178,6 +176,7 @@ export class EmployeesWindow {
     }
 
     parse(values) {
+        console.log(values)
         this.view.form.setValues(values)
     }
 
@@ -187,10 +186,10 @@ export class EmployeesWindow {
 
     clearForm() {
         this.view.form.clear()
+        this.view.form.clearValidation()
     }
 
 }
-
 
 export const EMPLOYEE_WINDOW_TYPE = {
     new: 'NEW',

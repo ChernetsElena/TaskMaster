@@ -23,7 +23,11 @@ export default function ProjectsView(){
                     type:{
                         width: 260,
                         height: 330,
-                        template:"<div class='overall' style='background: linear-gradient(-45deg, #color_one#, #color_two#)'><div class='title'>#name#</div></br><div class='description'>#description#</div></br><div class='teamlead'>Teamlead: #teamlead#</div></div>"
+                        template:
+                        "<div class='overall' style='background: linear-gradient(-45deg, #color_one#, #color_two#)'>" + 
+                        "<div class='title'>#name#</div></br>" + 
+                        "<div class='description'>#description#</div></br>" + 
+                        "<div class='teamlead'>Teamlead: #teamlead_last_name# #teamlead_name#</div></div>"
                     },
                     data:[]
                 },

@@ -19,19 +19,18 @@ export class EmployeesButton {
     }
 
     attachEvents() {
-         this.view = {
+        this.view = {
              toProjectsBtn: $$('employeeToProjectsBtn'),
              addEmployeeBtn: $$('employeeButtonAddBtn')
          }
 
-
-         this.view.addEmployeeBtn.attachEvent("onItemClick", () => {
+        this.view.addEmployeeBtn.attachEvent("onItemClick", () => {
             this.showWindow()
         })
 
-         this.view.toProjectsBtn.attachEvent("onItemClick", () => {
-             this.showProjectsView()
-         })
+        this.view.toProjectsBtn.attachEvent("onItemClick", () => {
+            this.showProjectsView()
+        })
     }
 
     showWindow() {

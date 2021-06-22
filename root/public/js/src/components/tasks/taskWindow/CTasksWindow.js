@@ -1,6 +1,7 @@
 import TaskWindowView from './TasksWindowView.js';
 import taskModel from '../../../models/taskModel.js';
 import {TASK_STATUS} from '../../../data/dataTasks.js'
+import employeeModel from '../../../models/employeeModel.js'
 
 export class TaskWindow {
     constructor(){
@@ -56,7 +57,6 @@ export class TaskWindow {
                 this.view.formfields.status.setValue(1)
             }
         })
-
 
         this.view.windowConfirmBtn.attachEvent("onItemClick", () => {
              switch (this.type) {
@@ -177,8 +177,8 @@ export class TaskWindow {
         }
     }
 
-    show(type, employees) {
-        this.names = employees
+    show(type) {
+        //this.names = employees
         switch (type) {
             case TASK_WINDOW_TYPE.create:
                 this.view.windowLabel.define("template", "Создание задачи")
@@ -190,7 +190,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", false)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.enable()
-                this.view.formfields.performer.define("options", employees)
+                //this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.define("options", [this.task_status[0], this.task_status[1]])
                 this.view.formfields.status.disable()
@@ -216,7 +216,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.enable()
-                this.view.formfields.performer.define("options", employees)
+                //this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.disable()
                 this.view.formfields.status.refresh()
@@ -240,7 +240,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
-                this.view.formfields.performer.define("options", employees)
+                //this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.enable()
                 this.view.formfields.status.define("options", [this.task_status[1], this.task_status[2], this.task_status[4]])
@@ -267,7 +267,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
-                this.view.formfields.performer.define("options", employees)
+                //this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.enable()
                 this.view.formfields.status.define("options", [this.task_status[2], this.task_status[3], this.task_status[4], this.task_status[5]])
@@ -294,7 +294,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
-                this.view.formfields.performer.define("options", employees)
+                //this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.enable()
                 this.view.formfields.status.define("options", [this.task_status[2], this.task_status[3], this.task_status[4], this.task_status[5]])
@@ -321,7 +321,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", false)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.enable()
-                this.view.formfields.performer.define("options", employees)
+                //this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.disable()
                 this.view.formfields.status.define("options", [this.task_status[0], this.task_status[1], this.task_status[4]])
@@ -346,7 +346,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
-                this.view.formfields.performer.define("options", employees)
+                //this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.disable()
                 this.view.formfields.status.refresh()
@@ -371,7 +371,7 @@ export class TaskWindow {
                 this.view.formfields.description.define("readonly", true)
                 this.view.formfields.description.refresh()
                 this.view.formfields.performer.disable()
-                this.view.formfields.performer.define("options", employees)
+                //this.view.formfields.performer.define("options", employees)
                 this.view.formfields.performer.refresh()
                 this.view.formfields.status.disable()
                 this.view.formfields.status.refresh()
@@ -397,11 +397,23 @@ export class TaskWindow {
         this.view.window.show()
     }
 
+    refresh() {
+        this.names = []
+        employeeModel.getEmployees().then((data) => {
+            data.map((employee) => {
+                this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+            })
+            this.view.formfields.performer.define("options", this.names)
+            this.view.formfields.performer.refresh()
+        })
+    }
+
     hide() {
         this.view.window.hide()
     }
 
     parse(values) {
+        console.log(values)
         this.view.form.setValues(values)
     }
 

@@ -5,7 +5,7 @@ export default function TasksView(){
     
     return {
         id: "tasksContainer",
-        css: {"background": "linear-gradient(-45deg, #ffdb5c, #ffacac)"},
+        css: "bg",
         rows: [
                 {
                     view:"search", 
@@ -40,7 +40,7 @@ export default function TasksView(){
                         "<div class ='title_tasks'>" + obj.name + "</div>" + 
                         "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
                         "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
-                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</br> <div class='performer_tasks'>" + obj.performer_name + " " + obj.performer_last_name + "</div>" +
                         "</div>"            
                     },
                     data:[]
@@ -68,7 +68,7 @@ export default function TasksView(){
                         "<div class ='title_tasks'>" + obj.name + "</div>" + 
                         "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
                         "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
-                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</br> <div class='performer_tasks'>" + obj.performer_name + " " + obj.performer_last_name + "</div>" +
                         "</div>"            
                     },                                
                     data: []
@@ -97,7 +97,7 @@ export default function TasksView(){
                         "<div class ='title_tasks'>" + obj.name + "</div>" + 
                         "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
                         "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
-                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</br> <div class='performer_tasks'>" + obj.performer_name + " " + obj.performer_last_name + "</div>" +
                         "</div>"            
                     },                
                     data: []
@@ -126,7 +126,7 @@ export default function TasksView(){
                         "<div class ='title_tasks'>" + obj.name + "</div>" + 
                         "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
                         "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
-                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</br> <div class='performer_tasks'>" + obj.performer_name + " " + obj.performer_last_name + "</div>" +
                         "</div>"            
                     },                                
                     data: []
@@ -156,7 +156,7 @@ export default function TasksView(){
                         "<div class ='title_tasks'>" + obj.name + "</div>" + 
                         "</br><div class='status_tasks'>Статус: " + TASK_STATUS[obj.status].value + "</div>" + 
                         "</br> <div class='performer_tasks'>Исполнитель: </div>" + 
-                        "</br> <div class='performer_tasks'>" + obj.performer + "</div>" +
+                        "</br> <div class='performer_tasks'>" + obj.performer_name + " " + obj.performer_last_name + "</div>" +
                         "</div>"            
                     },                 
                     data: []

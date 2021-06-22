@@ -1,7 +1,7 @@
 import EmployeesView from './EmployeesView.js'
 import {EmployeesWindow, EMPLOYEE_WINDOW_TYPE} from './employeesWindow/CEmployeesWindow.js';
 import employeeModel from '../../models/employeeModel.js'
-import {FormatDate, BirthToDate} from '../../../helpers/dateFormatter.js'
+import {FormatDate} from '../../../helpers/dateFormatter.js'
 
 
 export class Employees {
@@ -10,7 +10,6 @@ export class Employees {
         this.window = new EmployeesWindow()
         this.employeesButton
         this.FormatDate = FormatDate
-        // this.BirthToDate = BirthToDate
     }
     
     init (employeesButton, showProjectsViewCB) {

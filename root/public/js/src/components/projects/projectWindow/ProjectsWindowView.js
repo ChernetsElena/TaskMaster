@@ -90,11 +90,31 @@ export default function ProjectsWindowView(employees){
                         view:"combo", 
                         id:"formWindowProjecTeamlead", 
                         label:"Teamlead",
-                        name: "teamlead", 
+                        name: "teamleadID", 
                         width: 400,
                         labelWidth: 150,
                         align : 'center',
                         options: employees
+                    },
+                    {
+                        view:"text", 
+                        id:"formWindowProjecTeamleadName", 
+                        label:"Имя", 
+                        name: "performer_name",
+                        width: 400,
+                        labelWidth: 100,
+                        align : 'center',
+                        hidden: true
+                    },
+                    {
+                        view:"text", 
+                        id:"formWindowProjecTeamleadLastName", 
+                        label:"Фамилия", 
+                        name: "performer_last_name",
+                        width: 400,
+                        labelWidth: 100,
+                        align : 'center',
+                        hidden: true
                     },
                     {cols: [
                         {},
@@ -116,7 +136,7 @@ export default function ProjectsWindowView(employees){
         rules:{
             "name":webix.rules.isNotEmpty,
             "description":webix.rules.isNotEmpty,
-            "teamlead":webix.rules.isNotEmpty,
+            //"teamlead":webix.rules.isNotEmpty,
         },
         css:{"border-color":"orange"},
     }

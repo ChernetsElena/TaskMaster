@@ -66,14 +66,13 @@ export class Project {
                 this.clickTimeout = null
                 this.window.parse(selectedProject)
                 this.showWindow(PROJECT_WINDOW_TYPE.show);
-               
             } else {
                 this.clickTimeout = setTimeout(() => {
                     let selectedProject = this.view.projectsDv.getItem(id)
                     this.clickTimeout = null
                     taskModel.getTasksByProjectId(id).then((data) => {
-                        this.tasks.refreshView(data, id, selectedProject.color_one, selectedProject.color_two)
-                        console.log('in cproject', data, id, selectedProject.color_one, selectedProject.color_two)
+                        console.log('in cproject', id, selectedProject.color_one, selectedProject.color_two)
+                        this.tasks.refreshView(data, id, selectedProject.color_one, selectedProject.color_two)   
                     })
                     this.showTasksView()
                 }, 500)

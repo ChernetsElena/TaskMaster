@@ -110,13 +110,16 @@ export class Tasks {
     }
 
     showWindow(type) {
-        this.names = []
-        employeeModel.getEmployees().then((data) => {
-            data.map((employee) => {
-                this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
-            })
-            this.window.show(type, this.names)
-        })
+        // this.names = []
+        // employeeModel.getEmployees().then((data) => {
+        //     data.map((employee) => {
+        //         this.names.push({id: `${employee.id}`, value: `${employee.last_name} ${employee.name}`})
+        //     })
+        //     this.window.show(type, this.names)
+        // })
+        this.window.refresh()
+        this.window.show(type)
+
     }
 
     refreshView(tasksData, projectId, color_one, color_two) {
@@ -124,9 +127,6 @@ export class Tasks {
         this.color_one = color_one
         this.color_two = color_two
        
-        
-
-
         let newTasks = []
         let assignedTasks = []
         let inJobTasks = []
@@ -165,10 +165,6 @@ export class Tasks {
         this.view.coordinationList.parse(coordinationTasks)
         this.view.doneList.clearAll()
         this.view.doneList.parse(doneTasks)
-        this.view.container.define("css", {"background": `linear-gradient(-45deg, ${this.color_one}, ${this.color_two})`})
-        this.view.container.resize()
-        console.log('in refresh task', this.color_one, this.color_two)
-        
-        //console.log(this.view.container["$ready"])
+        document.querySelector('.bg').style.background = `linear-gradient(-45deg, ${this.color_one}, ${this.color_two})`;
     }
 }
