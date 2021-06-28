@@ -1,3 +1,8 @@
+@font-face {
+  font-family: RobotoMedium;
+  src: url('../fonts/Roboto-Medium.ttf');
+}
+
 .movies .webix_dataview {
   border: none;
   background: none;
@@ -13,71 +18,65 @@
 }
 
 .overall{
-    border-radius: 5px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 8px;
-    height: 320px;
-    padding: 10px;
-    color: black;
-    background: linear-gradient(-45deg, #ffdb5c, #ffacac);
-    box-shadow: 0px 1px 1px #d4d7de;
-    -moz-user-select: none;
-    -khtml-user-select: none;     
-    -webkit-user-select: none;
-    user-select: none;
+  font-family: RobotoMedium;
+  height: 220px;
+  width: 270px;
+  padding: 10px;
+  color: black;
+  background: linear-gradient(-45deg, #ffdb5c, #ffacac);
+  border-radius: 5px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 8px;
+  box-shadow: 0px 1px 1px #d4d7de;
+  -moz-user-select: none;
+  -khtml-user-select: none;     
+  -webkit-user-select: none;
+  user-select: none;
 }
   
-  .title{
+.title{
+    width: 270px;
     height:40px;
-    line-height:20px;
-    overflow:hidden;
-    font-weight:bold;
-    float: left;
-    padding-left: 5px;
     margin-top: 10px;
-    width: 200px;
-    -moz-user-select: none;
-    -khtml-user-select: none;     
-    -webkit-user-select: none;
-    user-select: none;
-  }
-
-  .title_long{
-    height:40px;
-    line-height:20px;
-    overflow:hidden;
-    font-weight:bold;
+    text-align: center;
     float: left;
-    padding-left: 5px;
-    width: 200px;
-    -moz-user-select: none;
-    -khtml-user-select: none;     
-    -webkit-user-select: none;
-    user-select: none;
-  }
-  .description{
-    height:150px;
-    margin-top: 10px;
     line-height:20px;
-    overflow: auto;
-    float: left;
-    padding-left: 5px;
-    width: 200px;
+    font-size: medium;
+    overflow:auto;
     word-wrap: break-word;
     -moz-user-select: none;
     -khtml-user-select: none;     
     -webkit-user-select: none;
     user-select: none;
   }
-  .teamlead{
-    margin-top: 50px;
-    height:40px;
-    line-height:20px;
-    overflow:hidden;
-    font-weight:bold;
-    float: left;
+
+  .description{
+    width: 270px;
+    height:110px;
+    margin-top: 10px;
     padding-left: 5px;
-    width: 200px;
+    padding-right: 5px;
+    float: left;
+    line-height:20px;
+    font-size: 14px;
+    overflow: auto;
+    word-wrap: break-word;
+    -moz-user-select: none;
+    -khtml-user-select: none;     
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .teamlead{
+    width: 270px;
+    height:40px;
+    margin-top: 10px;
+    text-align: end;
+    padding-right: 5px;
+    float: left;
+    line-height:20px;
+    overflow: auto;
+    word-wrap: break-word;
     -moz-user-select: none;
     -khtml-user-select: none;     
     -webkit-user-select: none;

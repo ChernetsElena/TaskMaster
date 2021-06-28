@@ -31,7 +31,7 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 180,
+                        height: 150,
                         width: 230
                     },
                     drag: false,
@@ -59,7 +59,7 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 180,
+                        height: 150,
                         width: 230
                     },
                     drag: false,
@@ -88,7 +88,7 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 180,
+                        height: 150,
                         width: 230
                     },
                     drag: false,
@@ -117,7 +117,7 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 180,
+                        height: 150,
                         width: 230
                     },
                     drag: false,
@@ -146,7 +146,7 @@ export default function TasksView(){
                     css:"movies_tasks",
                     select:true,
                     type: {
-                        height: 180,
+                        height: 150,
                         width: 230
                     },
                     drag: false,

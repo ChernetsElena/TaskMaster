@@ -14,12 +14,12 @@
 ]
 
 export const TASK_STATUS = [
-    {"id": 0, "value": 'Новая'},
-    {"id": 1, "value": 'Назначена'},
-    {"id": 2, "value": 'В работе'},
-    {"id": 3, "value": 'Пауза'},
-    {"id": 4, "value": 'Согласование'},
-    {"id": 5, "value": 'Решена'},
+    {"id": 0, value: 'Новая'},
+    {"id": 1, value: 'Назначена'},
+    {"id": 2, value: 'В работе'},
+    {"id": 3, value: 'Пауза'},
+    {"id": 4, value: 'Согласование'},
+    {"id": 5, value: 'Решена'},
 ]
 
 export const TASK_URGENTLY_COLOR = [

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: RobotoMedium;
+  src: url('../fonts/Roboto-Medium.ttf');
+}
+
 .webix_list {
     background: none;
     border: 2px solid white;
@@ -13,47 +18,36 @@
     -moz-border-radius: 8px;
     background-image:none;
     background-color:#aebaff;
-    color: rgb(32, 32, 32);
+    color: rgb(0, 0, 0);
 }
 
 .overall_tasks{
+    font-family: RobotoMedium;
     border-radius: 4px;
-    height: 160px;
+    height: 130px;
 }
   
-  .title_tasks{
-    height:60px;
-    line-height:20px;
-    overflow:hidden;
-    font-weight:bold;
-    float: left;
+.title_tasks{
+    height:40px;
+    width: 200px;
     margin-top: 6px;
     margin-left: 6px;
-    width: 200px;
-    word-wrap: break-word;
-  }
-
-  .title_long_tasks{
-    height:60px;
     line-height:20px;
-    overflow:hidden;
     font-weight:bold;
     float: left;
-    margin-left: 6px;
-    margin-top: 10px;
-    width: 200px;
+    overflow:auto;
     word-wrap: break-word;
-  }
+}
 
-  .status_tasks{
+.status_tasks{
     height:20px;
-    line-height:20px;
-    overflow:hidden;
+    width: 200px;
     margin-top: 5px;
     margin-left: 6px;
     float: left;
-    width: 200px;
-  }
+    line-height:20px;
+    overflow:hidden;
+}
 
 .performer_tasks{
     height:20px;
